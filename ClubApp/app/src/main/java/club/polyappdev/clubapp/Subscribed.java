@@ -7,6 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import club.polyappdev.clubapp.Models.Club;
+import club.polyappdev.clubapp.Models.Event;
+import club.polyappdev.clubapp.Models.Subscription;
 
 
 /**
@@ -28,6 +37,9 @@ public class Subscribed extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private List<Subscription> mSubscriptionList;
+    ListView subscribedListView;
 
     public Subscribed() {
         // Required empty public constructor
@@ -54,6 +66,7 @@ public class Subscribed extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -63,8 +76,43 @@ public class Subscribed extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+//        convertSubscriptionToList();
+
+        List<String> sample = new ArrayList<>();
+        sample.add("a");
+        sample.add("b");
+        sample.add("c");
+        sample.add("d");
+        sample.add("e");
+        sample.add("f");
+        sample.add("g");
+        sample.add("h");
+        sample.add("i");
+        sample.add("j");
+        sample.add("k");
+        sample.add("l");
+
+        List<String> sample1 = new ArrayList<>();
+        for (int i=0; i<15 ; i++){
+            sample1.add(i+"");
+        }
+
+        View view = inflater.inflate(R.layout.fragment_subscribed, container, false);
+        subscribedListView = (ListView) view.findViewById(R.id.subscribedListView);
+
+        ArrayAdapter adapter = new ArrayAdapter(this.getContext(), R.layout.subscribed_layout_row, R.id.subscribedTextView, sample);
+        ArrayAdapter adapterNum = new ArrayAdapter(this.getContext(), R.layout.subscribed_layout_row, R.id.numTextView, sample1);
+
+        subscribedListView.setAdapter(adapterNum);
+        subscribedListView.setAdapter(adapter);
+
+
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_subscribed, container, false);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
