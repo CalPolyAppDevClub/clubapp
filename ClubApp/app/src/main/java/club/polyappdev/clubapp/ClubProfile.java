@@ -8,10 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
 import club.polyappdev.clubapp.Models.Event;
+=======
+import club.polyappdev.clubapp.Models.Club;
+>>>>>>> origin/master
 
 
 /**
@@ -35,6 +39,7 @@ public class ClubProfile extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public ClubProfile() {
+<<<<<<< HEAD
         // Required empty public constructor
         List<String> tags = new ArrayList<>();
         tags.add("Apps");
@@ -47,6 +52,17 @@ public class ClubProfile extends Fragment {
         for (int i = 0; i < 4; i++) {
             Event event = new Event();
         }
+=======
+        Club test = new Club();
+        test.setName("Mobile App Development Club");
+        test.setPhoto("photo.png");
+        test.setDescription("Where People Make Apps!!!");
+        test.setEmail("appdev.calpoly.edu");
+        test.setWebsite("mobileappdev.com");
+        test.setClubType("Engineering");
+        test.setEventList("");
+        test.setTags("");
+>>>>>>> origin/master
     }
 
     /**
