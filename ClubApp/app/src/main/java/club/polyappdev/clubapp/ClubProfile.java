@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import club.polyappdev.clubapp.Models.Club;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +32,15 @@ public class ClubProfile extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public ClubProfile() {
-        // Required empty public constructor
+        Club test = new Club();
+        test.setName("Mobile App Development Club");
+        test.setPhoto("photo.png");
+        test.setDescription("Where People Make Apps!!!");
+        test.setEmail("appdev.calpoly.edu");
+        test.setWebsite("mobileappdev.com");
+        test.setClubType("Engineering");
+        test.setEventList("");
+        test.setTags("");
     }
 
     /**
