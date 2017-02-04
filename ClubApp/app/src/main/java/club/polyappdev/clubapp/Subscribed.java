@@ -7,6 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import club.polyappdev.clubapp.Models.Subscription;
+import java.util.*;
+import android.widget.ArrayAdapter;
+
 
 
 /**
@@ -28,6 +34,10 @@ public class Subscribed extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private List<Subscription> SubscriptionList;
+    private ListView subscribedListView;
+
 
     public Subscribed() {
         // Required empty public constructor
@@ -63,9 +73,37 @@ public class Subscribed extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
+        View view = inflater.inflate(R.layout.fragment_subscribed, container, false);
+
+
+        List<String> sample1 = new ArrayList<String>();
+        sample1.add("a");
+        sample1.add("b");
+        sample1.add("c");
+
+        List<String> sample2 = new ArrayList<String>();
+        sample2.add("d");
+        sample2.add("e");
+        sample2.add("f");
+
+
+
+        ArrayAdapter adapter = new ArrayAdapter(getContext(), R.layout.subscribed_layout_row, R.id.textView, sample1);
+
+        subscribedListView = (ListView) view.findViewById(R.id.subscribedListView);
+
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_subscribed, container, false);
+
+
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

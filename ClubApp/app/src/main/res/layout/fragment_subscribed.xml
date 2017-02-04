@@ -5,9 +5,9 @@
     tools:context="club.polyappdev.clubapp.Subscribed">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Subscribed Fragment" />
-
+        android:id="@+id/subscribedListView" />
 </FrameLayout>
