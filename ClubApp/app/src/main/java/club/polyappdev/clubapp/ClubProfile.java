@@ -8,6 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import club.polyappdev.clubapp.Models.Event;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +36,17 @@ public class ClubProfile extends Fragment {
 
     public ClubProfile() {
         // Required empty public constructor
+        List<String> tags = new ArrayList<>();
+        tags.add("Apps");
+        tags.add("Computer Science");
+        tags.add("Java");
+        tags.add("Android");
+        tags.add("iOS");
+
+        List<Event> events = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            Event event = new Event();
+        }
     }
 
     /**
