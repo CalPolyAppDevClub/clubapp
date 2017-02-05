@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.content.Context;
+import java.util.*;
 
 /**
  * Created by Alex on 2/4/17.
@@ -12,11 +13,17 @@ import android.content.Context;
 public class subscriptionRowAdapter extends BaseAdapter {
 
 
-    public subscriptionRowAdapter(Context context, )
+    public subscriptionRowAdapter(Context context, int resource) {
+
+    }
 
     @Override
     public int getCount() {
         return 0;
+    }
+
+    public void setLists(ArrayList<String> inputList, int inputTextView) {
+
     }
 
     @Override
