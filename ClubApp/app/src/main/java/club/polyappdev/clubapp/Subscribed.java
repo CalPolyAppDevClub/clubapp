@@ -7,12 +7,24 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.ListView;
 
 import club.polyappdev.clubapp.Models.Subscription;
 import java.util.*;
 import android.widget.ArrayAdapter;
 
+=======
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import club.polyappdev.clubapp.Models.Club;
+import club.polyappdev.clubapp.Models.Event;
+import club.polyappdev.clubapp.Models.Subscription;
+>>>>>>> 8228bb9d6a37ce1e4c5743ba45341c41dea32cef
 
 
 /**
@@ -35,9 +47,14 @@ public class Subscribed extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+<<<<<<< HEAD
     private List<Subscription> SubscriptionList;
     private ListView subscribedListView;
 
+=======
+    private List<Subscription> mSubscriptionList;
+    ListView subscribedListView;
+>>>>>>> 8228bb9d6a37ce1e4c5743ba45341c41dea32cef
 
     public Subscribed() {
         // Required empty public constructor
@@ -64,6 +81,7 @@ public class Subscribed extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -74,6 +92,7 @@ public class Subscribed extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+<<<<<<< HEAD
 
 
         View view = inflater.inflate(R.layout.fragment_subscribed, container, false);
@@ -94,14 +113,50 @@ public class Subscribed extends Fragment {
         ArrayAdapter adapter = new ArrayAdapter(getContext(), R.layout.subscribed_layout_row, R.id.textView, sample1);
 
         subscribedListView = (ListView) view.findViewById(R.id.subscribedListView);
+=======
+//        convertSubscriptionToList();
+
+        List<String> sample = new ArrayList<>();
+        sample.add("a");
+        sample.add("b");
+        sample.add("c");
+        sample.add("d");
+        sample.add("e");
+        sample.add("f");
+        sample.add("g");
+        sample.add("h");
+        sample.add("i");
+        sample.add("j");
+        sample.add("k");
+        sample.add("l");
+
+        List<String> sample1 = new ArrayList<>();
+        for (int i=0; i<15 ; i++){
+            sample1.add(i+"");
+        }
+
+        View view = inflater.inflate(R.layout.fragment_subscribed, container, false);
+        subscribedListView = (ListView) view.findViewById(R.id.subscribedListView);
+
+        ArrayAdapter adapter = new ArrayAdapter(this.getContext(), R.layout.subscribed_layout_row, R.id.subscribedTextView, sample);
+        ArrayAdapter adapterNum = new ArrayAdapter(this.getContext(), R.layout.subscribed_layout_row, R.id.numTextView, sample1);
+
+        subscribedListView.setAdapter(adapterNum);
+        subscribedListView.setAdapter(adapter);
+>>>>>>> 8228bb9d6a37ce1e4c5743ba45341c41dea32cef
 
 
 
 
         // Inflate the layout for this fragment
+<<<<<<< HEAD
         return inflater.inflate(R.layout.fragment_subscribed, container, false);
 
 
+=======
+
+        return view;
+>>>>>>> 8228bb9d6a37ce1e4c5743ba45341c41dea32cef
     }
 
 
