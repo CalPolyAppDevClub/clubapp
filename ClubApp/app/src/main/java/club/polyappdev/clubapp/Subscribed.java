@@ -7,14 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< HEAD
-import android.widget.ListView;
-
-import club.polyappdev.clubapp.Models.Subscription;
-import java.util.*;
-import android.widget.ArrayAdapter;
-
-=======
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,7 +16,6 @@ import java.util.List;
 import club.polyappdev.clubapp.Models.Club;
 import club.polyappdev.clubapp.Models.Event;
 import club.polyappdev.clubapp.Models.Subscription;
->>>>>>> 8228bb9d6a37ce1e4c5743ba45341c41dea32cef
 
 
 /**
@@ -47,14 +38,8 @@ public class Subscribed extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-<<<<<<< HEAD
-    private List<Subscription> SubscriptionList;
-    private ListView subscribedListView;
-
-=======
     private List<Subscription> mSubscriptionList;
     ListView subscribedListView;
->>>>>>> 8228bb9d6a37ce1e4c5743ba45341c41dea32cef
 
     public Subscribed() {
         // Required empty public constructor
@@ -92,28 +77,6 @@ public class Subscribed extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-<<<<<<< HEAD
-
-
-        View view = inflater.inflate(R.layout.fragment_subscribed, container, false);
-
-
-        List<String> sample1 = new ArrayList<String>();
-        sample1.add("a");
-        sample1.add("b");
-        sample1.add("c");
-
-        List<String> sample2 = new ArrayList<String>();
-        sample2.add("d");
-        sample2.add("e");
-        sample2.add("f");
-
-
-
-        ArrayAdapter adapter = new ArrayAdapter(getContext(), R.layout.subscribed_layout_row, R.id.textView, sample1);
-
-        subscribedListView = (ListView) view.findViewById(R.id.subscribedListView);
-=======
 //        convertSubscriptionToList();
 
         List<String> sample = new ArrayList<>();
@@ -143,22 +106,14 @@ public class Subscribed extends Fragment {
 
         subscribedListView.setAdapter(adapterNum);
         subscribedListView.setAdapter(adapter);
->>>>>>> 8228bb9d6a37ce1e4c5743ba45341c41dea32cef
 
 
 
 
         // Inflate the layout for this fragment
-<<<<<<< HEAD
-        return inflater.inflate(R.layout.fragment_subscribed, container, false);
-
-
-=======
 
         return view;
->>>>>>> 8228bb9d6a37ce1e4c5743ba45341c41dea32cef
     }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
