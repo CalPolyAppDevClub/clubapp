@@ -44,16 +44,6 @@
 
     <TextView
         android:text="TextView"
-        android:id="@+id/Description"
-        tools:text="Description"
-        android:layout_height="150dp"
-        android:layout_width="250dp"
-        android:layout_below="@+id/map"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="TextView"
         android:id="@+id/TilteView"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -92,4 +82,15 @@
         android:layout_alignTop="@+id/keyword"
         android:layout_toRightOf="@+id/Description"
         android:layout_toEndOf="@+id/Description" />
+
+    <TextView
+        android:text="TextView"
+        android:id="@+id/Description"
+        tools:text="Description"
+        android:layout_height="150dp"
+        android:layout_width="250dp"
+        android:layout_below="@+id/map"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="19dp" />
 </RelativeLayout>
