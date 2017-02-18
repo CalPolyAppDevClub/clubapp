@@ -12,6 +12,25 @@ public class Event {
     private Location location;
     private Date date; // Tommy said it includes time in the millisecond "said google"
     private String description;
+    private String stringLoc;
+    private Club club;
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }
+
+    public String getStringLoc() {
+        return stringLoc;
+    }
+
+    public void setStringLoc(String stringLoc) {
+        this.stringLoc = stringLoc;
+    }
+
     private String title;
     private String photo; /* reference to cache */
     private List<String> keywords;

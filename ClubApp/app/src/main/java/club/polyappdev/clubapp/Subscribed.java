@@ -1,8 +1,10 @@
 package club.polyappdev.clubapp;
 
 import android.content.Context;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import club.polyappdev.clubapp.Models.Club;
@@ -39,6 +44,7 @@ public class Subscribed extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private List<Subscription> mSubscriptionList;
+    private List<Event> mEventList;
     ListView subscribedListView;
 
     public Subscribed() {
@@ -77,36 +83,56 @@ public class Subscribed extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        convertSubscriptionToList();
+        Club club = new Club();
+        club.setName("Space Club");
 
-        List<String> sample = new ArrayList<>();
-        sample.add("a");
-        sample.add("b");
-        sample.add("c");
-        sample.add("d");
-        sample.add("e");
-        sample.add("f");
-        sample.add("g");
-        sample.add("h");
-        sample.add("i");
-        sample.add("j");
-        sample.add("k");
-        sample.add("l");
+        Club otherClub = new Club();
+        otherClub.setName("Better Space Club");
 
-        List<String> sample1 = new ArrayList<>();
-        for (int i=0; i<15 ; i++){
-            sample1.add(i+"");
-        }
+        ArrayList<Event> sample = new ArrayList<>();
+        Event event1 = new Event();
+        event1.setDate(new Date(2017, 0, 9));
+        event1.setStringLoc("Canada");
+        event1.setTitle("Moon Landing");
+        event1.setDescription("We are going to attempt to land a man on the moon, with the generous help of the Canadian Space Program.");
+        event1.setClub(club);
+
+        Event event2 = new Event();
+        event2.setDate(new Date(2017, 2, 11));
+        event2.setStringLoc("Mexico");
+        event2.setTitle("Another Moon Landing");
+        event2.setDescription("We are doing a moon landing that is way better than Space Club's");
+        event2.setClub(otherClub);
+
+        Event event3 = new Event();
+        event3.setDate(new Date(2017, 2, 12));
+        event3.setStringLoc("Japan");
+        event3.setTitle("Olympics");
+        event3.setDescription("The best space athletes gather to compete for the gold.");
+        event3.setClub(club);
+
+        sample.add(event1);
+        sample.add(event2);
+        sample.add(event3);
+
+        // FIXME delete this sample data
+        // the above is all testing code
+        // the adapter is written assuming we are making a list of events from subscribed clubs
+        // rather than a list of subscribed clubs
+
+//        for (Subscription sub : mSubscriptionList){ //FIXME this code should get subscriptions from database
+//            for (Event evnt : sub.getEvents()){
+//                mEventList.add(evnt);
+//            }
+//        }
 
         View view = inflater.inflate(R.layout.fragment_subscribed, container, false);
         subscribedListView = (ListView) view.findViewById(R.id.subscribedListView);
 
-        ArrayAdapter adapter = new ArrayAdapter(this.getContext(), R.layout.subscribed_layout_row, R.id.subscribedTextView, sample);
-        ArrayAdapter adapterNum = new ArrayAdapter(this.getContext(), R.layout.subscribed_layout_row, R.id.numTextView, sample1);
+        //FIXME change sample to mEventList once we are getting subscriptions from online
+        subscriptionRowAdapter adapter = new subscriptionRowAdapter(this.getContext(), R.layout.subscribed_layout_row, sample);
 
-        subscribedListView.setAdapter(adapterNum);
         subscribedListView.setAdapter(adapter);
-
 
 
 
