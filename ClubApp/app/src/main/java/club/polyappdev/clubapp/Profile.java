@@ -1,18 +1,12 @@
 package club.polyappdev.clubapp;
 
 import android.content.Context;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.TextViewCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 
 /**
@@ -28,12 +22,6 @@ public class Profile extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-
-    TextView nameView;
-    TextView majorView;
-    ImageView profileImage;
-    Button logoutButton;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -70,28 +58,13 @@ public class Profile extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        String text = "Created by Kris Campos";
-
-        // nameView.setText(text);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        nameView = (TextView) view.findViewById(R.id.nameView);
-        majorView = (TextView) view.findViewById(R.id.majorView);
-        profileImage = (ImageView) view.findViewById(R.id.profileImage);
-        logoutButton = (Button) view.findViewById(R.id.logoutButton);
-
-
-        nameView.setText("It works.");
-
-        return view;
-
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

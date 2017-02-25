@@ -10,6 +10,7 @@ public class Subscription {
     private Club club;
     private List<Event> events;
 
+
     public Club getClub() {
         return club;
     }
