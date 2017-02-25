@@ -1,12 +1,31 @@
 package club.polyappdev.clubapp;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.provider.CalendarContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import club.polyappdev.clubapp.Models.Club;
+import club.polyappdev.clubapp.Models.Event;
+import club.polyappdev.clubapp.Models.Subscription;
 
 
 /**
@@ -28,6 +47,10 @@ public class Subscribed extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private List<Subscription> mSubscriptionList;
+    private List<Event> mEventList;
+    ListView subscribedListView;
 
     public Subscribed() {
         // Required empty public constructor
@@ -54,6 +77,7 @@ public class Subscribed extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -63,8 +87,81 @@ public class Subscribed extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Club club = new Club();
+        club.setName("Space Club");
+
+        Club otherClub = new Club();
+        otherClub.setName("Better Space Club");
+
+        ArrayList<Event> sample = new ArrayList<>();
+        Event event1 = new Event();
+        event1.setDate(new Date(2017, 0, 9));
+        event1.setStringLoc("Canada");
+        event1.setTitle("Moon Landing");
+        event1.setDescription("We are going to attempt to land a man on the moon, with the generous help of the Canadian Space Program.");
+        event1.setClub(club);
+
+        Event event2 = new Event();
+        event2.setDate(new Date(2017, 2, 11));
+        event2.setStringLoc("Mexico");
+        event2.setTitle("Another Moon Landing");
+        event2.setDescription("We are doing a moon landing that is way better than Space Club's");
+        event2.setClub(otherClub);
+
+        Event event3 = new Event();
+        event3.setDate(new Date(2017, 2, 12));
+        event3.setStringLoc("Japan");
+        event3.setTitle("Olympics");
+        event3.setDescription("The best space athletes gather to compete for the gold.");
+        event3.setClub(club);
+
+        sample.add(event1);
+        sample.add(event2);
+        sample.add(event3);
+
+        // FIXME delete this sample data
+        // the above is all testing code
+        // the adapter is written assuming we are making a list of events from subscribed clubs
+        // rather than a list of subscribed clubs
+
+//        for (Subscription sub : mSubscriptionList){ //FIXME this code should get subscriptions from database
+//            for (EventInfo evnt : sub.getEvents()){
+//                mEventList.add(evnt);
+//            }
+//        }
+
+        View view = inflater.inflate(R.layout.fragment_subscribed, container, false);
+        subscribedListView = (ListView) view.findViewById(R.id.subscribedListView);
+
+        //FIXME change sample to mEventList once we are getting subscriptions from online
+        subscriptionRowAdapter adapter = new subscriptionRowAdapter(this.getContext(), R.layout.subscribed_layout_row, sample);
+
+        subscribedListView.setAdapter(adapter);
+
+        subscribedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Event clickedEvent = (Event) parent.getItemAtPosition(position);
+
+                Intent eventIntent = new Intent(getContext(),EventInfo.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
+                bundle.putString("eventDesc", clickedEvent.getDescription());
+                bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
+                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
+                bundle.putString("eventClub", clickedEvent.getClub().getName());
+                eventIntent.putExtras(bundle);
+                //based on item add info to intent
+                startActivity(eventIntent);
+            }
+        });
+
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_subscribed, container, false);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
