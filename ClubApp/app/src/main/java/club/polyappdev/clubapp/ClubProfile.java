@@ -7,6 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.ScrollView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +32,21 @@ public class ClubProfile extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    protected TextView clubName;
+    protected ImageView clubPhoto;
+    protected TextView clubDescription;
+    protected TextView clubEmail;
+    protected TextView clubWebsite;
+    protected Button subscribed;
+    protected ScrollView clubEvent;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private Club test = new Club();
 
     public ClubProfile() {
 
@@ -50,7 +63,6 @@ public class ClubProfile extends Fragment {
             Event event = new Event();
             events.add(event);
         }
-        Club test = new Club();
         test.setName("Mobile App Development Club");
         test.setPhoto("photo.png");
         test.setDescription("Where People Make Apps!!!");
@@ -92,7 +104,22 @@ public class ClubProfile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_club_profile, container, false);
+        View V = inflater.inflate(R.layout.fragment_club_profile, container, false);
+
+        clubName = (TextView) V.findViewById(R.id.clubNameView);
+        clubPhoto = (ImageView) V.findViewById(R.id.clubProfileImage);
+        clubDescription = (TextView) V.findViewById(R.id.clubDescriptionView);
+        clubEmail = (TextView) V.findViewById(R.id.emailView);
+        clubWebsite = (TextView) V.findViewById(R.id.websiteView);
+        subscribed = (Button) V.findViewById(R.id.subscribedButton);
+        clubEvent = (ScrollView) V.findViewById(R.id.clubEventView);
+
+        clubName.setText(test.getName());
+        clubDescription.setText(test.getDescription());
+        clubEmail.setText(test.getEmail());
+        clubWebsite.setText(test.getWebsite());
+
+        return V;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
