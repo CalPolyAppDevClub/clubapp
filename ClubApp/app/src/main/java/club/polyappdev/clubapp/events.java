@@ -67,6 +67,8 @@ public class events extends AppCompatActivity {
         event1.setStringLoc("California");
         event1.setTitle("Meetup");
         event1.setDescription("Bring laptops!");
+        event1.setFood(false);
+        event1.setClub(club2);
 
         Event event3 = new Event();
         event3.setDate(new Date(2017, 0, 9));
