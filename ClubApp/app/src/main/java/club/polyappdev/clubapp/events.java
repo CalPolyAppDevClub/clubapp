@@ -57,7 +57,17 @@ public class events extends AppCompatActivity {
         Club club = new Club();
         club.setName("Food Club");
 
+        Club club2 = new Club();
+        club2.setName("App Dev Club");
+
         ArrayList<Event> sample = new ArrayList<>();
+
+        Event event1 = new Event();
+        event1.setDate(new Date(2017, 8, 4));
+        event1.setStringLoc("California");
+        event1.setTitle("Meetup");
+        event1.setDescription("Bring laptops!");
+
         Event event3 = new Event();
         event3.setDate(new Date(2017, 0, 9));
         event3.setStringLoc("San Luis Obispo");
