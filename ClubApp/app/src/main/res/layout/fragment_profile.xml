@@ -1,13 +1,52 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="club.polyappdev.clubapp.Profile">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile Fragment" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="124dp"
+            android:id="@+id/profileImage" />
+
+        <Button
+            android:text="Log Out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="55dp"
+            android:id="@+id/logoutButton" />
+
+        <TextView
+            android:text="Your Name Here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp"
+            android:id="@+id/nameView"
+            android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+        <TextView
+            android:text="Your Major Here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:id="@+id/majorView"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:layout_below="@+id/nameView"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 </FrameLayout>
