@@ -1,17 +1,22 @@
 package club.polyappdev.clubapp;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.CalendarContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -121,7 +126,7 @@ public class Subscribed extends Fragment {
         // rather than a list of subscribed clubs
 
 //        for (Subscription sub : mSubscriptionList){ //FIXME this code should get subscriptions from database
-//            for (Event evnt : sub.getEvents()){
+//            for (EventInfo evnt : sub.getEvents()){
 //                mEventList.add(evnt);
 //            }
 //        }
@@ -133,6 +138,24 @@ public class Subscribed extends Fragment {
         subscriptionRowAdapter adapter = new subscriptionRowAdapter(this.getContext(), R.layout.subscribed_layout_row, sample);
 
         subscribedListView.setAdapter(adapter);
+
+        subscribedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Event clickedEvent = (Event) parent.getItemAtPosition(position);
+
+                Intent eventIntent = new Intent(getContext(),EventInfo.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
+                bundle.putString("eventDesc", clickedEvent.getDescription());
+                bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
+                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
+                bundle.putString("eventClub", clickedEvent.getClub().getName());
+                eventIntent.putExtras(bundle);
+                //based on item add info to intent
+                startActivity(eventIntent);
+            }
+        });
 
 
 

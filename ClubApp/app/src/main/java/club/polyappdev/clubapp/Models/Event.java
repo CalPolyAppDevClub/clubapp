@@ -1,7 +1,11 @@
 package club.polyappdev.clubapp.Models;
 
 import android.location.Location;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +17,10 @@ public class Event {
     private Date date; // Tommy said it includes time in the millisecond "said google"
     private String description;
     private String stringLoc;
+    private String stringDate;
+    private String clubName;
     private Club club;
+    //FIXME Let's add a photo for Events
 
     public Club getClub() {
         return club;
@@ -21,6 +28,7 @@ public class Event {
 
     public void setClub(Club club) {
         this.club = club;
+        this.clubName = club.getName();// so I can parcel it
     }
 
     public String getStringLoc() {
