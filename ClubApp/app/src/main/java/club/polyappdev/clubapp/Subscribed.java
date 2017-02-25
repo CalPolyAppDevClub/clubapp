@@ -126,7 +126,7 @@ public class Subscribed extends Fragment {
         // rather than a list of subscribed clubs
 
 //        for (Subscription sub : mSubscriptionList){ //FIXME this code should get subscriptions from database
-//            for (EventInfo evnt : sub.getEvents()){
+//            for (Online? evnt : sub.getEvents()){
 //                mEventList.add(evnt);
 //            }
 //        }
@@ -144,14 +144,14 @@ public class Subscribed extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Event clickedEvent = (Event) parent.getItemAtPosition(position);
 
-                Intent eventIntent = new Intent(getContext(),EventInfo.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
-                bundle.putString("eventDesc", clickedEvent.getDescription());
-                bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
-                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
-                bundle.putString("eventClub", clickedEvent.getClub().getName());
-                eventIntent.putExtras(bundle);
+                Intent eventIntent = new Intent(getContext(),events.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
+//                bundle.putString("eventDesc", clickedEvent.getDescription());
+//                bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
+//                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
+//                bundle.putString("eventClub", clickedEvent.getClub().getName());
+//                eventIntent.putExtras(bundle);
                 //based on item add info to intent
                 startActivity(eventIntent);
             }
