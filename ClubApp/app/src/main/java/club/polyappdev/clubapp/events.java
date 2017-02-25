@@ -30,7 +30,7 @@ public class events extends AppCompatActivity {
         /**
          *   init events(user) page view
          */
-        this.titleNameView = (TextView)findViewById(R.id.title_view);
+        this.titleNameView = (TextView)findViewById(R.id.titleView);
         this.photoView = (ImageView)findViewById(R.id.photos);
         this.locationView = (TextView)findViewById(R.id.location);
         this.timeView = (TextView)findViewById(R.id.time);
