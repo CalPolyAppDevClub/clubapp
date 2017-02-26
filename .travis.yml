@@ -1,39 +1,50 @@
 language: android
-jdk:
-  - oraclejdk8
-android:
-  components:
-    # Uncomment the lines below if you want to
-    # use the latest revision of Android SDK Tools
-    - tools
-    - tools
-    - platform-tools
+jdk: oraclejdk8
+# Use the Travis Container-Based Infrastructure
+sudo: false
 
-    # The BuildTools version used by your project
-    - build-tools-25.0.1
+cache:
+  directories:
+    - ${TRAVIS_BUILD_DIR}/gradle/caches/
+    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
 
-    # The SDK version used to compile your project
-    - android-25
+env:
+  global:
+    - ANDROID_API_LEVEL=25
+    - EMULATOR_API_LEVEL=23
+    - ANDROID_BUILD_TOOLS_VERSION=25.0.1
+    - ANDROID_ABI=armeabi-v7a
+    - ANDROID_TAG=google_apis
+    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
-    # Additional components
-    - extra-google-m2repository
-    - extra-android-m2repository
-
-
-
-    # More Additional components
-    - extra-google-google_play_services
-
-    # Specify at least one system image,
-    # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-android-25
-
-  licenses:
+licenses:
     - 'android-sdk-preview-license-.+'
     - 'android-sdk-preview-license'
     - 'android-sdk-license-.+'
     - 'android-sdk-license'
     - 'google-gdk-license-.+'
+
+android:
+  components:
+    - tools # to get the new `repository-11.xml`
+    - platform-tools
+    - tools # to install Android SDK tools 25.1.x
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
+    - android-$EMULATOR_API_LEVEL
+    # For Google APIs
+    - addon-google_apis-google-$ANDROID_API_LEVEL
+    - addon-google_apis-google-$EMULATOR_API_LEVEL
+    # Google Play Services
+    - extra-google-google_play_services
+    # Support library
+    - extra-android-support
+    # Latest artifacts in local repository
+    - extra-google-m2repository
+    - extra-android-m2repository
+    # Specify at least one system image
+    - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
+    - sys-img-armeabi-v7a-google_apis-$EMULATOR_API_LEVEL
 
 script:
   - cd ClubApp
