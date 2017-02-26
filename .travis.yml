@@ -18,9 +18,9 @@ env:
 
 android:
   components:
-    - tools # to get the new `repository-11.xml`
-    - platform-tools
-    - tools # to install Android SDK tools 25.1.x
+    #- tools # to get the new `repository-11.xml`
+    #- platform-tools
+    #- tools # to install Android SDK tools 25.1.x
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
     - android-$ANDROID_API_LEVEL
     # For Google APIs
@@ -34,7 +34,7 @@ android:
     - extra-android-m2repository
     # Specify at least one system image
     - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
-    
+
 licenses:
     - 'android-sdk-preview-license-.+'
     - 'android-sdk-license-.+'
