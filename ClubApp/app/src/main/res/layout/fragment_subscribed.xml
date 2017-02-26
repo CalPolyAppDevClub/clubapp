@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="club.polyappdev.clubapp.Subscribed">
+    tools:context="club.polyappdev.clubapp.StudentViewable.Subscribed">
 
     <!-- TODO: Update blank fragment layout -->
 
