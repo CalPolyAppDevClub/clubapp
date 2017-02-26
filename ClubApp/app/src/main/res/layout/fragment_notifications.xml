@@ -5,9 +5,19 @@
     tools:context="club.polyappdev.clubapp.StudentViewable.Notifications">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Notifications Fragment" />
+        android:layout_marginBottom="?attr/actionBarSize">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listView">
+
+        </ListView>
+
+    </RelativeLayout>
 
 </FrameLayout>
