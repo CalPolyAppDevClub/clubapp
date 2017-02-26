@@ -1,4 +1,4 @@
-package club.polyappdev.clubapp;
+package club.polyappdev.clubapp.StudentViewable;
 
 import android.content.Context;
 import android.net.Uri;
@@ -13,6 +13,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import club.polyappdev.clubapp.R;
 
 
 /**

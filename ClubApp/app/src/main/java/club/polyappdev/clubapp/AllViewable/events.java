@@ -1,4 +1,4 @@
-package club.polyappdev.clubapp;
+package club.polyappdev.clubapp.AllViewable;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.MapView;
+
+import club.polyappdev.clubapp.R;
 
 public class events extends AppCompatActivity {
     /**
