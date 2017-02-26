@@ -7,7 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import java.util.Date;
+
+import club.polyappdev.clubapp.Models.Club;
+import club.polyappdev.clubapp.Models.Event;
+import club.polyappdev.clubapp.Models.Notification;
 import club.polyappdev.clubapp.R;
 
 
@@ -24,12 +30,15 @@ public class Notifications extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    //test
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    Notification[] notification_list = new Notification[20];
+    ListView listView;
 
     public Notifications() {
         // Required empty public constructor
@@ -60,13 +69,40 @@ public class Notifications extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notifications, container, false);
+        View view = inflater.inflate(R.layout.fragment_notifications, container, false);
+
+        createList();
+
+        listView = (ListView) view.findViewById(R.id.listView);
+        NotificationListAdapter customAdapter = new NotificationListAdapter(getActivity().getApplicationContext(), notification_list);
+        listView.setAdapter(customAdapter);
+
+        return view;
+    }
+
+    public void createList() {
+        Club[] clubList = new Club[notification_list.length];
+        Event[] eventList = new Event[notification_list.length];
+        for (int i = 0; i < notification_list.length; i++) {
+            notification_list[i] = new Notification();
+            clubList[i] = new Club();
+            eventList[i] = new Event();
+            clubList[i].setName("Club #" + i);
+            eventList[i].setTitle("Event #" + i);
+            notification_list[i].setClub(clubList[i]);
+            notification_list[i].setDate(new Date(i*1000000));
+            notification_list[i].setContent("Description #" + i);
+            notification_list[i].setEvent(eventList[i]);
+        }
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -85,6 +121,7 @@ public class Notifications extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+
     }
 
     @Override
