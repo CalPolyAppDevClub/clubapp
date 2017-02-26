@@ -9,7 +9,7 @@ env:
   global:
     - ANDROID_API_LEVEL=25
     - ANDROID_BUILD_TOOLS_VERSION=25.0.2
-    - ANDROID_ABI=armeabi-v7a
+    - ANDROID_ABI=x86_64
     - ANDROID_TAG=google_apis
     - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
@@ -40,11 +40,12 @@ licenses:
 before_script:
   - cd ClubApp
   - chmod +x gradlew
-  # Create and start emulator
+  # list all emulator targets with SDK level
   - android list sdk -a -e
-  - echo y | android update sdk -a -u -t sys-img-x86-android-23
+  # list available emulator targets with SDK level
   - android list targets
-  - echo no | android create avd --force -n test -t "android-"$ANDROID_API_LEVEL
+  # Create and start emulator
+  - echo no | android create avd --force -n test -t "android-"$ANDROID_API_LEVEL --abi $ANDROID_ABI
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
