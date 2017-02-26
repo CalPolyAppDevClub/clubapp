@@ -30,7 +30,7 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     # Specify at least one system image
-    - sys-img-x86_64-google_apis-$ANDROID_API_LEVEL
+    - sys-img-x86-google_apis-$ANDROID_API_LEVEL
 jdk:
   oraclejdk8
 licenses:
@@ -45,7 +45,7 @@ before_script:
   # list available emulator targets with SDK level
   - android list targets
   # Create and start emulator
-  - echo no | android create avd --force -n test -t android-25 --abi google_apis/x86_64
+  - echo no | android create avd --force -n test -t android-25 --abi google_apis/x86
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
