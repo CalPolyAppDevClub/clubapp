@@ -22,6 +22,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ClubViewable.ClubMainActivity"></activity>
+        <activity
+            android:name=".ClubProfileActivity"
+            android:label="@string/title_activity_club_profile"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
