@@ -1,0 +1,64 @@
+language: android
+sudo: true
+
+cache:
+  directories:
+    - ${TRAVIS_BUILD_DIR}/gradle/caches/
+    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
+
+env:
+  global:
+    - ANDROID_API_LEVEL=24
+    - ANDROID_BUILD_TOOLS_VERSION=25.0.2
+    # Using Emulator for an older Android version, because there is no newer emulator, which works in travis-ci
+    - EMULATOR_API_LEVEL=24
+    - EMULATOR_ABI=armeabi-v7a
+    - EMULATOR_TAG=google_apis
+    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+
+android:
+  components:
+    - tools # to get the new `repository-11.xml`
+    - platform-tools
+    - tools # to install Android SDK tools 25.1.x
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
+    #- android-$EMULATOR_API_LEVEL
+    # For Google APIs
+    - addon-google_apis-google-$ANDROID_API_LEVEL
+    # Google Play Services
+    - extra-google-google_play_services
+    # Support library
+    - extra-android-support
+    # Latest artifacts in local repository
+    - extra-google-m2repository
+    - extra-android-m2repository
+    # Specify at least one system image
+    - sys-img-$EMULATOR_ABI-google_apis-$EMULATOR_API_LEVEL
+jdk:
+  oraclejdk8
+licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+before_script:
+  - cd ClubApp
+  - chmod +x gradlew
+  - sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6
+  # list all emulator targets with SDK level
+  - android list sdk -a -e
+  # list available emulator targets with SDK level
+  - android list targets
+  # Create and start emulator
+  #- echo no | android create avd --force -n test -t "android-"$EMULATOR_API_LEVEL --abi $EMULATOR_ABI --tag $EMULATOR_TAG
+  #- emulator -avd test -no-window &
+  #- travis_wait 30 android-wait-for-emulator
+  # Previous command seems to end too early, so wait a bit more
+  #- |
+  #  while ! adb shell getprop init.svc.bootanim; do
+  #    echo Waiting for boot animation to end
+  #    sleep 10
+  #  done
+  #- adb shell input keyevent 82 &
+script:
+  - ./gradlew build
