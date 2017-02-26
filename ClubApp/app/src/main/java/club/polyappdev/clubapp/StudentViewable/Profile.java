@@ -1,4 +1,4 @@
-package club.polyappdev.clubapp;
+package club.polyappdev.clubapp.StudentViewable;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import club.polyappdev.clubapp.R;
 
 
 /**

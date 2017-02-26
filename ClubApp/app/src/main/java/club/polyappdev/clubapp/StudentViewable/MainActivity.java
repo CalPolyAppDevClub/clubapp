@@ -1,8 +1,7 @@
-package club.polyappdev.clubapp;
+package club.polyappdev.clubapp.StudentViewable;
 
+import android.content.Intent;
 import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -18,6 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
+
+import club.polyappdev.clubapp.AllViewable.LoginActivity;
+import club.polyappdev.clubapp.R;
 
 public class MainActivity extends AppCompatActivity implements
         General.OnFragmentInteractionListener,
@@ -77,6 +80,13 @@ public class MainActivity extends AppCompatActivity implements
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == R.id.action_logout){
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Toast toast;
+            toast = Toast.makeText(this, "You have been \"logged out\"", Toast.LENGTH_SHORT);
+            toast.show();
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
