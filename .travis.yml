@@ -40,7 +40,8 @@ licenses:
 before_script:
   - cd ClubApp
   - chmod +x gradlew
-   # Create and start emulator
+  # Create and start emulator
+  - android list targets
   - echo no | android create avd --force -n test -t "android-"$ANDROID_API_LEVEL
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
