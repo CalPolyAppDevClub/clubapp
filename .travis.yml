@@ -1,4 +1,5 @@
 language: android
+sudo: true
 
 cache:
   directories:
@@ -43,6 +44,7 @@ licenses:
 before_script:
   - cd ClubApp
   - chmod +x gradlew
+  - sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6
   # list all emulator targets with SDK level
   - android list sdk -a -e
   # list available emulator targets with SDK level
