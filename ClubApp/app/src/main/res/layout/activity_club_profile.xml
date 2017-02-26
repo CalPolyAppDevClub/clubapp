@@ -82,7 +82,10 @@
             android:layout_marginTop="21dp"
             android:id="@+id/websiteView"
             android:layout_below="@+id/clubDescriptionView"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignLeft="@+id/clubDescriptionView"
+            android:layout_alignStart="@+id/clubDescriptionView"
+            android:layout_alignRight="@+id/clubDescriptionView"
+            android:layout_alignEnd="@+id/clubDescriptionView" />
 
         <TextView
             android:text="Email Here"
@@ -90,10 +93,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/clubDescriptionView"
             android:id="@+id/emailView"
-            android:layout_alignRight="@+id/websiteView"
-            android:layout_alignEnd="@+id/websiteView"
-            android:layout_alignLeft="@+id/subscribedButton"
-            android:layout_alignStart="@+id/subscribedButton" />
+            android:layout_alignLeft="@+id/clubDescriptionView"
+            android:layout_alignStart="@+id/clubDescriptionView"
+            android:layout_alignRight="@+id/clubDescriptionView"
+            android:layout_alignEnd="@+id/clubDescriptionView" />
     </RelativeLayout>
 
 
