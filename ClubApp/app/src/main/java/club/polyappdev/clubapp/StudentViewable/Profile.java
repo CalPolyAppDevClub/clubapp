@@ -76,8 +76,9 @@ public class Profile extends Fragment {
         navButtonToClubProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ClubProfileActivity.class);
-                startActivity(intent);
+                //COMMENTING THIS OUT....
+                //Intent intent = new Intent(getActivity(), ClubProfileActivity.class);
+                //startActivity(intent);
             }
         });
 
