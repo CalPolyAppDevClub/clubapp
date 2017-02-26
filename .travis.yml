@@ -41,7 +41,8 @@ before_script:
   - cd ClubApp
   - chmod +x gradlew
   # Create and start emulator
-  - echo "y" | android update sdk -a --no-ui --filter sys-img-armeabi-v7a-android-25,sys-img-x86_64-android-25
+  - android list sdk -a -e
+  - android update sdk -a -u -t sys-img-x86-android-23
   - android list targets
   - echo no | android create avd --force -n test -t "android-"$ANDROID_API_LEVEL
   - emulator -avd test -no-audio -no-window &
