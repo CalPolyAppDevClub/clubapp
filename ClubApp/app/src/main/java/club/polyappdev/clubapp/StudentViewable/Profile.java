@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import club.polyappdev.clubapp.ClubProfileActivity;
 import club.polyappdev.clubapp.R;
 
 
