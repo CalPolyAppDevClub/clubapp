@@ -6,18 +6,29 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize">
 
+        <TextView
+            android:text="My Notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/notificationsTitle"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:gravity="center_horizontal" />
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listView">
+            android:id="@+id/notificationListView">
 
         </ListView>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </FrameLayout>
