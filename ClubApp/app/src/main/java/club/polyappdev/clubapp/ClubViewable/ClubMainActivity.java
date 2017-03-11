@@ -3,11 +3,13 @@ package club.polyappdev.clubapp.ClubViewable;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import club.polyappdev.clubapp.AllViewable.LoginActivity;
+import club.polyappdev.clubapp.MySetting;
 import club.polyappdev.clubapp.R;
 import club.polyappdev.clubapp.StudentViewable.MainActivity;
 
@@ -35,7 +37,9 @@ public class ClubMainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(ClubMainActivity.this, MySetting.class);
+            Log.w("test","test");
+            startActivity(intent);
         }
         if (id == R.id.action_logout){
             Intent intent = new Intent(ClubMainActivity.this, LoginActivity.class);

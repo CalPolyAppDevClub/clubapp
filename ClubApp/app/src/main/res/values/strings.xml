@@ -20,4 +20,5 @@
         completions."
     </string>
     <string name="title_activity_club_profile">ClubProfileActivity</string>
+    <string name="title_my_settings">Settings</string>
 </resources>
