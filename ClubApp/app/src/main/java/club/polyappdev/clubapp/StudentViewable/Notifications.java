@@ -1,16 +1,19 @@
 package club.polyappdev.clubapp.StudentViewable;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.Date;
 
+import club.polyappdev.clubapp.AllViewable.events;
 import club.polyappdev.clubapp.Models.Club;
 import club.polyappdev.clubapp.Models.Event;
 import club.polyappdev.clubapp.Models.Notification;
@@ -81,26 +84,50 @@ public class Notifications extends Fragment {
 
         createList();
 
-        listView = (ListView) view.findViewById(R.id.listView);
+        listView = (ListView) view.findViewById(R.id.notificationListView);
         NotificationListAdapter customAdapter = new NotificationListAdapter(getActivity().getApplicationContext(), notification_list);
         listView.setAdapter(customAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Event clickedEvent = ((Notification)parent.getAdapter().getItem(position)).getEvent();
+
+
+                Intent eventIntent = new Intent(getContext(),events.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
+                bundle.putString("eventDesc", clickedEvent.getDescription());
+                bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
+                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
+                bundle.putString("eventClub", clickedEvent.getClub().getName());
+                eventIntent.putExtras(bundle);
+
+                startActivity(eventIntent);
+            }
+        });
 
         return view;
     }
 
     public void createList() {
-        Club[] clubList = new Club[notification_list.length];
-        Event[] eventList = new Event[notification_list.length];
+        Club tempClub;
+        Event tempEvent;
         for (int i = 0; i < notification_list.length; i++) {
             notification_list[i] = new Notification();
-            clubList[i] = new Club();
-            eventList[i] = new Event();
-            clubList[i].setName("Club #" + i);
-            eventList[i].setTitle("Event #" + i);
-            notification_list[i].setClub(clubList[i]);
+            tempClub = new Club();
+            tempEvent = new Event();
+            tempClub.setName("Club Name " + i);
+            tempEvent.setTitle("Event Name " + i);
+            tempEvent.setDescription("Description " + i);
+            tempEvent.setStringLoc("Building " + i);
+            tempEvent.setDate(new Date(i*1000000));
+            tempEvent.setClub(tempClub);
+            notification_list[i].setClub(tempClub);
             notification_list[i].setDate(new Date(i*1000000));
-            notification_list[i].setContent("Description #" + i);
-            notification_list[i].setEvent(eventList[i]);
+            notification_list[i].setContent("Description " + i);
+            notification_list[i].setEvent(tempEvent);
         }
 
     }

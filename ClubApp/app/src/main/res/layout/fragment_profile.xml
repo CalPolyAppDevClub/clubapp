@@ -52,10 +52,10 @@
             android:id="@+id/clubprofilebutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Setting_but"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="11dp"
-            android:text="To Club Profile" />
+            android:layout_marginBottom="21dp"
+            android:id="@+id/clubprofilebutton"
+            android:layout_above="@+id/logoutButton"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/Setting_but"
@@ -66,5 +66,6 @@
             android:layout_below="@+id/majorView"
             android:layout_marginTop="12dp"
             android:text="Setting" />
+
     </RelativeLayout>
 </FrameLayout>

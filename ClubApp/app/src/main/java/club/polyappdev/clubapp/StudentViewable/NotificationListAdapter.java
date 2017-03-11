@@ -32,7 +32,7 @@ public class NotificationListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return notification_list[i];
     }
 
     @Override
