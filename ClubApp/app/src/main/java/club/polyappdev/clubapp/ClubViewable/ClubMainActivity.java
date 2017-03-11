@@ -35,18 +35,19 @@ public class ClubMainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        Log.w("test","test");
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(ClubMainActivity.this, MySetting.class);
-            Log.w("test","test");
-            startActivity(intent);
-        }
+
         if (id == R.id.action_logout){
             Intent intent = new Intent(ClubMainActivity.this, LoginActivity.class);
             Toast toast;
             toast = Toast.makeText(this, "You have been \"logged out\"", Toast.LENGTH_SHORT);
             toast.show();
             startActivity(intent);
+        }
+        else if (id == R.id.action_settings) {
+            Intent intent2 = new Intent(ClubMainActivity.this, MySetting.class);
+            startActivity(intent2);
         }
 
         return super.onOptionsItemSelected(item);
