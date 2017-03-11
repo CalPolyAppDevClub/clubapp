@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import club.polyappdev.clubapp.AllViewable.LoginActivity;
+import club.polyappdev.clubapp.MySetting;
 import club.polyappdev.clubapp.R;
 
 import static android.R.attr.fragment;
@@ -129,7 +130,8 @@ public class MainActivity extends AppCompatActivity implements
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent2 = new Intent(MainActivity.this, MySetting.class);
+            startActivity(intent2);
         }
         if (id == R.id.action_logout){
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
