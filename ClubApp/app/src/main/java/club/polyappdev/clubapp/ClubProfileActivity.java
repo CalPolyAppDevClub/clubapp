@@ -90,6 +90,8 @@ public class ClubProfileActivity extends AppCompatActivity {
         clubDescription.setText(test.getDescription());
         clubEmail.setText(test.getEmail());
         clubWebsite.setText(test.getWebsite());
+
+        clubPhoto.setImageResource(R.drawable.gettheapp);
     }
 
 }
