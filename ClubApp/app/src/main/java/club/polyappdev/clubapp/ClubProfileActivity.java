@@ -85,7 +85,7 @@ public class ClubProfileActivity extends AppCompatActivity {
         clubWebsite = (TextView) findViewById(R.id.websiteView);
         subscribed = (Button) findViewById(R.id.subscribedButton);
         clubEvent = (ScrollView) findViewById(R.id.clubEventView);
-        
+
         clubName.setText(test.getName());
         clubDescription.setText(test.getDescription());
         clubEmail.setText(test.getEmail());
