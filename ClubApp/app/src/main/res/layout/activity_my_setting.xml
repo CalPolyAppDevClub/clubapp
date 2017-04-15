@@ -21,6 +21,7 @@
         android:text="Edit Profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="sendMessage"
         android:layout_below="@+id/Accounttag"
         android:id="@+id/Edit_But"
         android:layout_alignParentLeft="true"
@@ -42,12 +43,39 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/C_P_but"
         android:id="@+id/Settings" />
+
     <Button
         android:text="Notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Settings"
         android:id="@+id/Noti_but"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Others"
+        android:layout_below="@+id/Noti_but"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Provide Feedback"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clear Cache"
+        android:layout_below="@+id/button2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 </RelativeLayout>
