@@ -45,8 +45,8 @@ public class events extends AppCompatActivity {
         this.keywordView = (TextView)findViewById(R.id.keyword);
         this.notifymeView = (CheckBox)findViewById(R.id.notifyBox);
 
-        Intent i = new Intent();
-        i = getIntent();
+        //Intent i = new Intent();
+        Intent i = getIntent();
         String eventName = i.getStringExtra("eventName");
         String location = i.getStringExtra("eventStrLoc");
         String description = i.getStringExtra("eventDesc");
