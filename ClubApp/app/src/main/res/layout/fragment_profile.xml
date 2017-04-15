@@ -12,51 +12,62 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/profileImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@mipmap/ic_launcher"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="124dp"
-            android:id="@+id/profileImage" />
+            android:layout_marginTop="51dp" />
 
         <Button
-            android:text="Log Out"
+            android:id="@+id/logoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/clubprofilebutton"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="55dp"
-            android:id="@+id/logoutButton" />
+            android:layout_marginTop="17dp"
+            android:text="Log Out" />
 
         <TextView
-            android:text="Your Name Here"
+            android:id="@+id/nameView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profileImage"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="28dp"
-            android:id="@+id/nameView"
+            android:text="Your Name Here"
             android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
         <TextView
-            android:text="Your Major Here"
+            android:id="@+id/majorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="42dp"
-            android:id="@+id/majorView"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium"
             android:layout_below="@+id/nameView"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="34dp"
+            android:text="Your Major Here"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
         <Button
-            android:text="To Club Profile"
+            android:id="@+id/clubprofilebutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:id="@+id/clubprofilebutton"
-            android:layout_above="@+id/logoutButton"
-            android:layout_alignRight="@+id/nameView"
-            android:layout_alignEnd="@+id/nameView" />
+            android:layout_alignEnd="@+id/majorView"
+            android:layout_alignRight="@+id/majorView"
+            android:layout_below="@+id/Setting_but"
+            android:layout_marginTop="14dp"
+            android:text="Club Profile" />
+
+        <Button
+            android:id="@+id/Setting_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/logoutButton"
+            android:layout_alignStart="@+id/logoutButton"
+            android:layout_below="@+id/majorView"
+            android:layout_marginTop="11dp"
+            android:text="Setting" />
+
     </RelativeLayout>
 </FrameLayout>

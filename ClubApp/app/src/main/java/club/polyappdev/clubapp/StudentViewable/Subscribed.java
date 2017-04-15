@@ -139,13 +139,13 @@ public class Subscribed extends Fragment {
                 Event clickedEvent = (Event) parent.getItemAtPosition(position);
 
                 Intent eventIntent = new Intent(getContext(),events.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
-//                bundle.putString("eventDesc", clickedEvent.getDescription());
-//                bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
-//                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
-//                bundle.putString("eventClub", clickedEvent.getClub().getName());
-//                eventIntent.putExtras(bundle);
+                Bundle bundle = new Bundle();
+                bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
+                bundle.putString("eventDesc", clickedEvent.getDescription());
+                bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
+                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
+                bundle.putString("eventClub", clickedEvent.getClub().getName());
+                eventIntent.putExtras(bundle);
                 //based on item add info to intent
                 startActivity(eventIntent);
             }

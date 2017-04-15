@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import club.polyappdev.clubapp.ClubProfileActivity;
+import club.polyappdev.clubapp.MySetting;
 import club.polyappdev.clubapp.R;
 
 
@@ -65,6 +66,7 @@ public class Profile extends Fragment {
         }
     }
 
+    Button toSettingButton;
     Button navButtonToClubProfile;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,7 +83,14 @@ public class Profile extends Fragment {
                 startActivity(intent);
             }
         });
-
+        toSettingButton = (Button) v.findViewById(R.id.Setting_but);
+        toSettingButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), MySetting.class);
+                startActivity(intent);
+            }
+        });
         return v;
 
     }

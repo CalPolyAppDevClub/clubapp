@@ -3,6 +3,8 @@
     package="club.polyappdev.clubapp">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+
+    <!-- android:theme="@style/AppTheme.NoActionBar"-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,6 +24,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ClubViewable.ClubMainActivity"></activity>
+        <activity
+            android:name="MySetting"
+            android:label="@string/title_my_settings">
+        </activity>
+
         <activity
             android:name=".ClubProfileActivity"
             android:label="@string/title_activity_club_profile"

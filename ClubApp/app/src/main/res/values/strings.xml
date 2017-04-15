@@ -20,4 +20,14 @@
         completions."
     </string>
     <string name="title_activity_club_profile">ClubProfileActivity</string>
+
+    <string name="title_my_settings">Settings</string>
+
+    <!-- Strings for Fragment Navigation-->
+    <string name="nav_subscribed">Subscribed</string>
+    <string name="nav_general">General</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_notification">Notification</string>
+
+
 </resources>
