@@ -1,5 +1,6 @@
 package club.polyappdev.clubapp;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import club.polyappdev.clubapp.Models.Club;
@@ -26,7 +28,8 @@ public class ClubProfileActivity extends AppCompatActivity {
     protected TextView clubWebsite;
     protected Button subscribed;
     protected ScrollView clubEvent;
-
+    private double d1 = 0.0;
+    private int d2 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +46,11 @@ public class ClubProfileActivity extends AppCompatActivity {
         tags.add("Android");
         tags.add("iOS");
 
-        List<Event> events = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            Event event = new Event();
-            events.add(event);
-        }
+        List<String> keywords = new ArrayList<>();
+        keywords.add("Android");
+        keywords.add("iOS");
+        keywords.add("Mobile Apps");
+
         Club test = new Club();
         test.setName("Mobile App Development Club");
         test.setPhoto("photo.png");
@@ -55,8 +58,25 @@ public class ClubProfileActivity extends AppCompatActivity {
         test.setEmail("appdev.calpoly.edu");
         test.setWebsite("mobileappdev.com");
         test.setClubType("Engineering");
-        test.setEventList(events);
+
         test.setTags(tags);
+
+        List<Event> events = new ArrayList<>();
+
+        for (int k = 0; k < 4; k++) {
+            Event event = new Event();
+            event.setClub(test);
+            event.setDate(new Date());
+            event.setLocation(new Location(Location.convert(d1, d2)));
+            event.setDescription("Weekly Overview");
+            event.setStringLoc("180-114");
+            event.setStringDate("4/22/2017");
+            event.setTitle("General Meeting");
+            event.setFood(false);
+            event.setKeywords(keywords);
+            events.add(event);
+        }
+        test.setEventList(events);
 
         clubName = (TextView) findViewById(R.id.clubNameView);
         clubPhoto = (ImageView) findViewById(R.id.clubProfileImage);
@@ -70,8 +90,6 @@ public class ClubProfileActivity extends AppCompatActivity {
         clubDescription.setText(test.getDescription());
         clubEmail.setText(test.getEmail());
         clubWebsite.setText(test.getWebsite());
-
-
     }
 
 }
