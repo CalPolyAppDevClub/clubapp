@@ -7,24 +7,24 @@
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:text="My Subscribed Events"
+            android:id="@+id/subscriptionPageTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/subscriptionPageTitle"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:gravity="center_horizontal"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
-            android:gravity="center_horizontal" />
+            android:text="My Subscribed Events"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
         <ListView
+            android:id="@+id/subscribedListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/subscribedListView" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
