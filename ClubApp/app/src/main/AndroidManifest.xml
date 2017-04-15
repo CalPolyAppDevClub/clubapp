@@ -28,7 +28,13 @@
             android:name="MySetting"
             android:label="@string/title_my_settings">
         </activity>
-
+        <activity
+            android:name=".EditProfile">
+        </activity>
+        <activity
+            android:name=".Pop"
+            android:theme = "@style/AppTheme.PopupPassword">
+        </activity>
         <activity
             android:name=".ClubProfileActivity"
             android:label="@string/title_activity_club_profile"
