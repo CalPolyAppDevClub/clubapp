@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "84820536226",
+    "firebase_url": "https://clubapp-ea819.firebaseio.com",
+    "project_id": "clubapp-ea819",
+    "storage_bucket": "clubapp-ea819.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84820536226:android:64b3bf6d2f2dcfc9",
+        "android_client_info": {
+          "package_name": "club.polyappdev.clubapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84820536226-uev38fss6a3bks6i9omrede9bcnf7771.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "club.polyappdev.clubapp",
+            "certificate_hash": "5c70d3d6451f25106d8ec8bf1345e28c9fdf33bc"
+          }
+        },
+        {
+          "client_id": "84820536226-l45ik7ltmlr7s820vkdtl6sfq8vk3b1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD81YdT44-wTzaXMhRf9jeyMY0UukZaREc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84820536226-l45ik7ltmlr7s820vkdtl6sfq8vk3b1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
