@@ -48,6 +48,7 @@ public class ClubProfileActivity extends AppCompatActivity {
             Event event = new Event();
             events.add(event);
         }
+
         Club test = new Club();
         test.setName("Mobile App Development Club");
         test.setPhoto("photo.png");
@@ -66,12 +67,11 @@ public class ClubProfileActivity extends AppCompatActivity {
         subscribed = (Button) findViewById(R.id.subscribedButton);
         clubEvent = (ScrollView) findViewById(R.id.clubEventView);
 
+        /* setting the club name, description, email, and website */
         clubName.setText(test.getName());
         clubDescription.setText(test.getDescription());
         clubEmail.setText(test.getEmail());
         clubWebsite.setText(test.getWebsite());
-
-
     }
 
 }
