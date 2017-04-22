@@ -16,6 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import club.polyappdev.clubapp.ClubViewable.ClubMainActivity;
 import club.polyappdev.clubapp.R;
 import club.polyappdev.clubapp.StudentViewable.MainActivity;
