@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,8 +17,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 import club.polyappdev.clubapp.ClubViewable.ClubMainActivity;
 import club.polyappdev.clubapp.R;
 import club.polyappdev.clubapp.StudentViewable.MainActivity;
@@ -29,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText usernameView;
     EditText passwordView;
     Button loginButton;
+    Button registrationButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -59,8 +57,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
         this.usernameView = (EditText) findViewById(R.id.NameLoginView);
-        this.passwordView = (EditText) findViewById(R.id.PassLoginView);
+        this.passwordView = (EditText) findViewById(R.id.FirstNameView);
         this.loginButton = (Button) findViewById(R.id.LoginButton);
+        this.registrationButton = (Button) findViewById(R.id.signUp);
         usernameView.requestFocus();
 
         passwordView.setOnKeyListener(new View.OnKeyListener() {
@@ -80,6 +79,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginAttempt();
+            }
+        });
+
+        registrationButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
+                startActivity(i);
             }
         });
     }
