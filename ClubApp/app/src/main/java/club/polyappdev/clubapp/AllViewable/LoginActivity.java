@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -59,27 +61,47 @@ public class LoginActivity extends AppCompatActivity {
         this.loginButton = (Button) findViewById(R.id.LoginButton);
         usernameView.requestFocus();
 
+        passwordView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                boolean keyEntered = false;
+                if (i == keyEvent.KEYCODE_ENTER && (!getString(passwordView).equals("") && !getString(usernameView).equals(""))){
+                    keyEntered = true;
+                    loginAttempt();
+
+                }
+
+                return keyEntered;
+            }
+        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = getUsername();
-                String password = getPassword();
-                if (username.toLowerCase().contains("club")){
-                    Intent clubIntent = new Intent(LoginActivity.this, ClubMainActivity.class);
-                    startActivity(clubIntent);
-                } else{
-                    signIn(username, password);
-                    /*Intent userIntent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(userIntent);*/
-                }
+                loginAttempt();
             }
         });
     }
+    private void loginAttempt(){
+        String username = getString(usernameView);
+        String password = getString(passwordView);
 
-    private String getUsername(){
-        return this.usernameView.getText().toString();
+        if (username.toLowerCase().contains("club")){
+            Intent clubIntent = new Intent(LoginActivity.this, ClubMainActivity.class);
+            startActivity(clubIntent);
+        }else if (username.equals("") || password.equals("")){
+            //do Nothing
+        }else{
+            signIn(username, password);
+        }
     }
-    private String getPassword() { return this.passwordView.getText().toString(); }
+    private String getString(EditText view){
+        if (!view.getText().toString().equals(null) && !view.getText().toString().equals(""))
+            return view.getText().toString();
+        else{
+            Toast.makeText(LoginActivity.this, "Please enter username/password", Toast.LENGTH_SHORT).show();
+            return "";
+        }
+    }
 
     public void onStart(){
         super.onStart();
