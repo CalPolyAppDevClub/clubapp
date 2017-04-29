@@ -60,9 +60,7 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mBottomNavigationView = (BottomNavigationView) findViewById(R.id.BottomNav) ;
-        setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
 //        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());

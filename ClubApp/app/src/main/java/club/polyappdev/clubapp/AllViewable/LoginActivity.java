@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 boolean keyEntered = false;
-                if (i == keyEvent.KEYCODE_ENTER && (!getString(passwordView).equals("") && !getString(usernameView).equals(""))){
+                if (i == KeyEvent.KEYCODE_ENTER && (!getString(passwordView).equals("") && !getString(usernameView).equals(""))){
                     keyEntered = true;
                     loginAttempt();
 

@@ -13,8 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".StudentViewable.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/app_name"/>
         <activity android:name=".AllViewable.events" />
         <activity android:name=".AllViewable.LoginActivity">
             <intent-filter>

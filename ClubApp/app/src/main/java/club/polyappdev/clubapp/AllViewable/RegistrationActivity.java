@@ -34,12 +34,12 @@ public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    Button SignUp = (Button) findViewById(R.id.SignUpFinal);
-    EditText FirstNameView = (EditText) findViewById(R.id.FirstNameView);
-    EditText LastNameView = (EditText) findViewById(R.id.LastNameView);
-    EditText EmailView = (EditText) findViewById(R.id.CalPolyEmailView);
-    EditText PasswordView = (EditText) findViewById(R.id.PasswordView);
-    EditText PasswordConfirmView = (EditText) findViewById(R.id.RetypePasswordView);
+    Button SignUp;
+    EditText FirstNameView;
+    EditText LastNameView;
+    EditText EmailView;
+    EditText PasswordView;
+    EditText PasswordConfirmView;
 
 
 
@@ -63,30 +63,45 @@ public class RegistrationActivity extends AppCompatActivity {
           }
         };
 
+
+        this.SignUp = (Button) findViewById(R.id.SignUpFinal);
         this.FirstNameView = (EditText) findViewById(R.id.FirstNameView);
         this.LastNameView = (EditText) findViewById(R.id.LastNameView);
         this.EmailView = (EditText) findViewById(R.id.CalPolyEmailView);
         this.PasswordView = (EditText) findViewById(R.id.PasswordView);
         this.PasswordConfirmView = (EditText) findViewById(R.id.RetypePasswordView);
+        FirstNameView.requestFocus();
 
+        PasswordConfirmView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                boolean keyEntered = false;
+                if (i == keyEvent.KEYCODE_ENTER && (!getString(FirstNameView).equals("") && !getString(LastNameView).equals("") && !getString(EmailView).equals("") && !getString(PasswordView).equals("") && !getString(PasswordConfirmView).equals(""))){
+                    keyEntered = true;
+                    signUpAttempt();
+
+                }
+
+                return keyEntered;
+            }
+        });
 
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
-
             public void onClick(View v) {
-                signUpAttempt(FirstNameView, LastNameView, EmailView, PasswordView, PasswordConfirmView);
+                signUpAttempt();
             }
         });
 
 
     }
-    private void signUpAttempt(EditText first, EditText last, EditText mail, EditText pass, EditText passconfirm){
-        String firstname = getString(first);
-        String lastname = getString(last);
-        String email = getString(mail);
-        String password = getString(pass);
-        String passwordconfirm = getString(passconfirm);
-        if(firstname != "" && lastname != "" && email  != "" && password != "" && passwordconfirm != "") {
+    private void signUpAttempt(){
+        String firstname = getString(FirstNameView);
+        String lastname = getString(LastNameView);
+        String email = getString(EmailView);
+        String password = getString(PasswordView);
+        String passwordconfirm = getString(PasswordConfirmView);
+        if(!firstname.equals("") && !lastname.equals("") && !email.equals("") && !password.equals("") && !passwordconfirm.equals("") && password.equals(passwordconfirm)) {
             createAccount(email, password);
         }
     }
@@ -95,18 +110,19 @@ public class RegistrationActivity extends AppCompatActivity {
         if (!view.getText().toString().equals(null) && !view.getText().toString().equals(""))
             return view.getText().toString();
         else{
-            Toast.makeText(RegistrationActivity.this, "Registration Failed, Please Try Again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistrationActivity.this, R.string.blank_field, Toast.LENGTH_SHORT).show();
             return "";
         }
     }
 
 
-
+    @Override
     public void onStart(){
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
 
+    @Override
     public void onStop(){
         super.onStop();
         if(mAuthListener != null){
@@ -119,11 +135,16 @@ public class RegistrationActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(RegistrationActivity.this, R.string.reg_success,
-                                    Toast.LENGTH_SHORT).show();
+                         if (!task.isSuccessful()) {
+                            Toast.makeText(RegistrationActivity.this, R.string.reg_fail, Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(RegistrationActivity.this, R.string.reg_success, Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(RegistrationActivity.this, LoginActivity.class);
+                            startActivity(i);
                         }
                     }
                 });
     }
+
+
 }

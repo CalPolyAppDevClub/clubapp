@@ -21,6 +21,8 @@
         completions."
     </string>
     <string name="reg_success">"Registration Successful</string>
+    <string name="reg_fail">"Registration Failed, Please Try Again</string>
+    <string name="blank_field">"Do Not Leave Field(s) Blank"</string>
     <string name="title_activity_club_profile">ClubProfileActivity</string>
 
     <string name="title_my_settings">Settings</string>
