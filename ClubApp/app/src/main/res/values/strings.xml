@@ -20,6 +20,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="reg_success">"Registration Successful</string>
     <string name="title_activity_club_profile">ClubProfileActivity</string>
 
     <string name="title_my_settings">Settings</string>
