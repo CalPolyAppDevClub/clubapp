@@ -86,7 +86,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = getString(mail);
         String password = getString(pass);
         String passwordconfirm = getString(passconfirm);
-        if(firstname != "" && lastname != "" && email  != "" && password != "" && passwordconfirm != "") {
+        if(firstname != "" && lastname != "" && email  != "" && password != "" && passwordconfirm != "" && password.equals(passwordconfirm)) {
             createAccount(email, password);
         }
     }
@@ -95,7 +95,7 @@ public class RegistrationActivity extends AppCompatActivity {
         if (!view.getText().toString().equals(null) && !view.getText().toString().equals(""))
             return view.getText().toString();
         else{
-            Toast.makeText(RegistrationActivity.this, "Registration Failed, Please Try Again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistrationActivity.this, R.string.blank_field, Toast.LENGTH_SHORT).show();
             return "";
         }
     }
@@ -120,8 +120,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(RegistrationActivity.this, R.string.reg_success,
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegistrationActivity.this, R.string.reg_success, Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(RegistrationActivity.this, LoginActivity.class);
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(RegistrationActivity.this, R.string.reg_fail, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

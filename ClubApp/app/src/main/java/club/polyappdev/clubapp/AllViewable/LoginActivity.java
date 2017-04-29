@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         this.registrationButton = (Button) findViewById(R.id.signUp);
         usernameView.requestFocus();
 
-        passwordView.setOnKeyListener(new View.OnKeyListener() {
+        /*passwordView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 boolean keyEntered = false;
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 return keyEntered;
             }
-        });
+        });*/
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
