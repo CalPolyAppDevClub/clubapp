@@ -22,111 +22,456 @@
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="1">
-
-        <ImageView
-            android:id="@+id/clubProfileImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="144dp"
-            android:adjustViewBounds="false"
-            android:cropToPadding="false"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            app:srcCompat="@mipmap/ic_launcher"
-            android:layout_weight="0.2" />
-
-        <TextView
-            android:id="@+id/clubNameView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/clubProfileImage"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="38dp"
-            android:text="Club Name Here"/>
-            //android:textAppearance="@android:style/TextAppearance.Material.Large" />
-
-        <Button
-            android:id="@+id/subscribedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/clubNameView"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:text="Subscribe" />
-
-        <TextView
-            android:id="@+id/clubDescriptionView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/subscribedButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
-            android:layout_gravity="center"
-            android:text="Club Description Here" />
-
-        <TextView
-            android:id="@+id/websiteView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/clubDescriptionView"
-            android:layout_alignLeft="@+id/clubDescriptionView"
-            android:layout_alignRight="@+id/clubDescriptionView"
-            android:layout_alignStart="@+id/clubDescriptionView"
-            android:layout_below="@+id/clubDescriptionView"
-            android:layout_marginTop="21dp"
-            android:layout_gravity="center"
-            android:text="Contact Info here" />
-
-        <TextView
-            android:id="@+id/emailView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/clubDescriptionView"
-            android:layout_alignLeft="@+id/clubDescriptionView"
-            android:layout_alignRight="@+id/clubDescriptionView"
-            android:layout_alignStart="@+id/clubDescriptionView"
-            android:layout_below="@+id/clubDescriptionView"
-            android:layout_gravity="center"
-            android:text="Email Here" />
-
-        <ScrollView
-            android:id="@+id/clubEventView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/websiteView">
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".33"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/clubProfileImage"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:layout_weight="0.2"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/clubNameView"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_below="@+id/clubProfileImage"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="38dp"
+                android:gravity="center"
+                android:text="Mobile App Dev Club" />
 
-                <ListView
-                    android:id="@+id/subscribedListView1"
+            <TextView
+                    android:id="@+id/websiteView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/clubDescriptionView"
+                    android:layout_alignLeft="@+id/clubDescriptionView"
+                    android:layout_alignRight="@+id/clubDescriptionView"
+                    android:layout_alignStart="@+id/clubDescriptionView"
+                    android:layout_below="@+id/clubDescriptionView"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="21dp"
+                    android:gravity="center"
+                    android:text="Contact Info here"/>
+
+            <TextView
+                android:id="@+id/clubDescriptionView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/subscribedButton"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:text="Club Description Here" />
+
+            <TextView
+                    android:id="@+id/emailView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/clubDescriptionView"
+                    android:layout_alignLeft="@+id/clubDescriptionView"
+                    android:layout_alignRight="@+id/clubDescriptionView"
+                    android:layout_alignStart="@+id/clubDescriptionView"
+                    android:layout_below="@+id/clubDescriptionView"
+                    android:layout_gravity="center"
+                    android:text="Email Here" />
+
+            <Button
+                android:id="@+id/subscribedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/clubNameView"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:text="Subscribe" />
+
+            <ImageView
+                android:id="@+id/Bar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                app:srcCompat="@android:drawable/dialog_holo_dark_frame" />
+        </LinearLayout>
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".7">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                <ListView
-                    android:id="@+id/subscribedListView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
 
-                <ListView
-                    android:id="@+id/subscribedListView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                        <ImageView
+                            android:id="@+id/subscriptionClubIcon"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:scaleType="center"
+                            android:scaleX=".75"
+                            android:scaleY=".75"
+                            app:srcCompat="@mipmap/ic_launcher" />
 
-            </LinearLayout>
-        </ScrollView>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:orientation="vertical">
 
-    </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:paddingBottom="5dp"
+                                    android:text="Project Meeting"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/textView7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Baker Science (180-112)" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Cal Poly App Dev Club" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="date time" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/subscriptionClubIcon"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:scaleType="center"
+                            android:scaleX=".75"
+                            android:scaleY=".75"
+                            app:srcCompat="@mipmap/ic_launcher" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:paddingBottom="5dp"
+                                    android:text="Project Meeting"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/textView7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Baker Science (180-112)" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Cal Poly App Dev Club" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="date time" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/subscriptionClubIcon"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:scaleType="center"
+                            android:scaleX=".75"
+                            android:scaleY=".75"
+                            app:srcCompat="@mipmap/ic_launcher" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:paddingBottom="5dp"
+                                    android:text="Project Meeting"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/textView7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Baker Science (180-112)" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Cal Poly App Dev Club" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="date time" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/subscriptionClubIcon"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:scaleType="center"
+                            android:scaleX=".75"
+                            android:scaleY=".75"
+                            app:srcCompat="@mipmap/ic_launcher" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:paddingBottom="5dp"
+                                    android:text="Project Meeting"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/textView7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Baker Science (180-112)" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Cal Poly App Dev Club" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="date time" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/subscriptionClubIcon"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:scaleType="center"
+                            android:scaleX=".75"
+                            android:scaleY=".75"
+                            app:srcCompat="@mipmap/ic_launcher" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:paddingBottom="5dp"
+                                    android:text="Project Meeting"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/textView7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Baker Science (180-112)" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Cal Poly App Dev Club" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="date time" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

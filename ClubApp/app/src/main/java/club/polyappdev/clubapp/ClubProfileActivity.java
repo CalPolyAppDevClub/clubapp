@@ -78,20 +78,27 @@ public class ClubProfileActivity extends AppCompatActivity {
         }
         test.setEventList(events);
 
+        /* initializing views */
         clubName = (TextView) findViewById(R.id.clubNameView);
         clubPhoto = (ImageView) findViewById(R.id.clubProfileImage);
         clubDescription = (TextView) findViewById(R.id.clubDescriptionView);
         clubEmail = (TextView) findViewById(R.id.emailView);
         clubWebsite = (TextView) findViewById(R.id.websiteView);
         subscribed = (Button) findViewById(R.id.subscribedButton);
-        clubEvent = (ScrollView) findViewById(R.id.clubEventView);
+        //clubEvent = (ScrollView) findViewById(R.id.clubEventView);
 
+        /* setting views */
         clubName.setText(test.getName());
         clubDescription.setText(test.getDescription());
         clubEmail.setText(test.getEmail());
         clubWebsite.setText(test.getWebsite());
 
         clubPhoto.setImageResource(R.drawable.gettheapp);
+
+
     }
 
+    private void setEvent() {
+
+    }
 }
