@@ -29,6 +29,8 @@
     <string name="nav_general">General</string>
     <string name="nav_profile">Profile</string>
     <string name="nav_notification">Notification</string>
+    <string name="title_activity_map_">Map_Activity</string>
+    <string name="title_activity_map">MapActivity</string>
 
 
 </resources>
