@@ -20,6 +20,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,11 +135,14 @@ public class MainActivity extends AppCompatActivity implements
             Intent intent2 = new Intent(MainActivity.this, MySetting.class);
             startActivity(intent2);
         }
+        //4.22.2017 modify logout to clear stack and log out of account from firebase - Jacky Huang
         if (id == R.id.action_logout){
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             Toast toast;
             toast = Toast.makeText(this, "You have been \"logged out\"", Toast.LENGTH_SHORT);
             toast.show();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            FirebaseAuth.getInstance().signOut();
             startActivity(intent);
         }
 

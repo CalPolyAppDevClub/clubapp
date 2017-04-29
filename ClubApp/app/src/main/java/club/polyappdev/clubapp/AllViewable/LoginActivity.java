@@ -91,7 +91,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void loginAttempt(){
-        String username = getString(usernameView);
+        //Temporary deactivate login; testing purposes; DO NOT DELETE
+
+        /*String username = getString(usernameView);
         String password = getString(passwordView);
 
         if (username.toLowerCase().contains("club")){
@@ -101,8 +103,12 @@ public class LoginActivity extends AppCompatActivity {
             //do Nothing
         }else{
             signIn(username, password);
-        }
+        }*/
+
+
+        signIn("studenttest@calpoly.edu", "Mustang2017");
     }
+
     private String getString(EditText view){
         if (!view.getText().toString().equals(null) && !view.getText().toString().equals(""))
             return view.getText().toString();
