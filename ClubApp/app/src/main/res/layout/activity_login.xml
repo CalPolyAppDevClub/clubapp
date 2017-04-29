@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/PassLoginView"
+        android:id="@+id/FirstNameView"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/NameLoginView"
         android:layout_alignStart="@+id/NameLoginView"
@@ -25,7 +25,7 @@
         android:text="Log In!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/PassLoginView"
+        android:layout_below="@+id/FirstNameView"
         android:layout_centerHorizontal="true"
         android:id="@+id/LoginButton" />
 
@@ -36,6 +36,26 @@
         android:ems="10"
         android:id="@+id/NameLoginView"
         android:hint="Email"
-        android:layout_above="@+id/PassLoginView"
+        android:layout_above="@+id/FirstNameView"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:elevation="10dp"
+        android:text="Sign Up Here!" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/signUp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Don't have an account?" />
 </RelativeLayout>

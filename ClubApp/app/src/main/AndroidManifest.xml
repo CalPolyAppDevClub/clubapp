@@ -23,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AllViewable.RegistrationActivity">
+        </activity>
         <activity android:name=".ClubViewable.ClubMainActivity"></activity>
         <activity
             android:name="MySetting"
