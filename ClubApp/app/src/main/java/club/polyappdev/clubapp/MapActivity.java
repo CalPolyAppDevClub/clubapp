@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.PlaceLikelihood;
@@ -66,6 +67,7 @@ public class MapActivity extends AppCompatActivity
     private String[] mLikelyPlaceAttributions = new String[mMaxEntries];
     private LatLng[] mLikelyPlaceLatLngs = new LatLng[mMaxEntries];
 
+    private SupportMapFragment mapFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,20 +79,27 @@ public class MapActivity extends AppCompatActivity
         }
 
         setContentView(R.layout.activity_map);
+
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // Build the Play services client for use by the Fused Location Provider and the Places API.
         // Use the addApi() method to request the Google Places API and the Fused Location Provider.
-
-        //TODO: I HAVE OMITTED THE PLACES API PART OF THIS BECAUSE IT WAS CAUSING ERRORS, IT MIGHT BE NECESSARY
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */,
                         this /* OnConnectionFailedListener */)
                 .addConnectionCallbacks(this)
                 .addApi(LocationServices.API)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
                 .build();
+
         mGoogleApiClient.connect();
+
+
+
 
     }
 
@@ -109,8 +118,6 @@ public class MapActivity extends AppCompatActivity
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         // Build the map.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
@@ -127,6 +134,7 @@ public class MapActivity extends AppCompatActivity
         Log.d(TAG, "Play services connection failed: ConnectionResult.getErrorCode() = "
                 + connectionResult.getErrorCode());
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -303,9 +311,9 @@ public class MapActivity extends AppCompatActivity
         } else {
             // Add a default marker, because the user hasn't selected a place.
             mMap.addMarker(new MarkerOptions()
-                    .title(getString(R.string.default_info_title))
+                    .title("Default Location")
                     .position(mDefaultLocation)
-                    .snippet(getString(R.string.default_info_snippet)));
+                    .snippet("No places found, because location permission is disabled."));
         }
     }
 
