@@ -9,8 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import club.polyappdev.clubapp.AllViewable.LoginActivity;
 import club.polyappdev.clubapp.ClubProfileActivity;
+import club.polyappdev.clubapp.ClubViewable.ClubMainActivity;
 import club.polyappdev.clubapp.MySetting;
 import club.polyappdev.clubapp.R;
 
@@ -68,6 +73,9 @@ public class Profile extends Fragment {
 
     Button toSettingButton;
     Button navButtonToClubProfile;
+    Button toLogOut;
+    boolean logOutClicked = false; //check if log out button is clicked.
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -89,6 +97,25 @@ public class Profile extends Fragment {
             public void onClick(View view){
                 Intent intent = new Intent(getActivity(), MySetting.class);
                 startActivity(intent);
+            }
+        });
+        //Log Out button working 4.29.17 - Jacky Huang
+        toLogOut = (Button) v.findViewById(R.id.logoutButton);
+        toLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOutClicked = true;
+                if(logOutClicked)
+                {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(intent);
+                }
+                else
+                {
+                    //do nothing
+                }
             }
         });
         return v;
