@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import club.polyappdev.clubapp.AllViewable.LoginActivity;
 import club.polyappdev.clubapp.MySetting;
 import club.polyappdev.clubapp.R;
@@ -38,11 +40,14 @@ public class ClubMainActivity extends AppCompatActivity {
         Log.w("test","test");
         //noinspection SimplifiableIfStatement
 
+        //4.29.2017 modify logout to clear stack and log out of account from firebase - Jacky Huang
         if (id == R.id.action_logout){
             Intent intent = new Intent(ClubMainActivity.this, LoginActivity.class);
             Toast toast;
             toast = Toast.makeText(this, "You have been \"logged out\"", Toast.LENGTH_SHORT);
             toast.show();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            FirebaseAuth.getInstance().signOut();
             startActivity(intent);
         }
         else if (id == R.id.action_settings) {
