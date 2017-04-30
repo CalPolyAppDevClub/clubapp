@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -143,7 +144,9 @@ public class Subscribed extends Fragment {
                 bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
                 bundle.putString("eventDesc", clickedEvent.getDescription());
                 bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
-                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
+                String dateStr = DateFormat.getDateInstance(DateFormat.LONG).format(clickedEvent.getDate());
+                String timeStr = DateFormat.getTimeInstance(DateFormat.SHORT).format((clickedEvent.getDate()));
+                bundle.putString("eventDate", dateStr+", "+timeStr);
                 bundle.putString("eventClub", clickedEvent.getClub().getName());
                 eventIntent.putExtras(bundle);
                 //based on item add info to intent

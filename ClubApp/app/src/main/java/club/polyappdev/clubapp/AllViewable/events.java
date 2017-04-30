@@ -45,7 +45,6 @@ public class events extends AppCompatActivity {
         this.keywordView = (TextView)findViewById(R.id.keyword);
         this.notifymeView = (CheckBox)findViewById(R.id.notifyBox);
 
-        //Intent i = new Intent();
         Intent i = getIntent();
         String eventName = i.getStringExtra("eventName");
         String location = i.getStringExtra("eventStrLoc");
@@ -54,7 +53,7 @@ public class events extends AppCompatActivity {
         String clubName = i.getStringExtra("eventClub");
 
         titleNameView.setText(clubName + ":" +  " " + eventName);
-        locationView.setText("location: " + location);
+        locationView.setText("Location: " + location);
         timeView.setText("Date: " + date);
         descriptionView.setText("Description: " + description);
     }

@@ -16,7 +16,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/FirstNameView"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/NameLoginView"
         android:layout_alignLeft="@+id/NameLoginView"
         android:layout_alignStart="@+id/NameLoginView"
         android:hint="Password" />
@@ -36,7 +36,7 @@
         android:ems="10"
         android:id="@+id/NameLoginView"
         android:hint="Email"
-        android:layout_above="@+id/FirstNameView"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
