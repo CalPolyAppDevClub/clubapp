@@ -1,12 +1,14 @@
 package club.polyappdev.clubapp.StudentViewable;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -14,6 +16,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import club.polyappdev.clubapp.MapActivity;
 import club.polyappdev.clubapp.R;
 
 
@@ -37,6 +40,8 @@ public class General extends Fragment implements OnMapReadyCallback{
 
     private OnFragmentInteractionListener mListener;
     private GoogleMap mMap;
+
+    private Button MapButton;
 
     public General() {
         // Required empty public constructor
@@ -75,8 +80,17 @@ public class General extends Fragment implements OnMapReadyCallback{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_general, container, false);
+        this.MapButton = (Button) v.findViewById(R.id.to_map_button);
+        MapButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), MapActivity.class);
+                startActivity(i);
+            }
+        });
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_general, container, false);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
