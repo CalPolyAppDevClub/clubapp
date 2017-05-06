@@ -13,7 +13,7 @@ import com.google.android.gms.maps.MapView;
 
 import club.polyappdev.clubapp.R;
 
-public class events extends AppCompatActivity {
+public class EventDetailActivity extends AppCompatActivity {
     /**
      *  Events page(user side)
      *  @author Jacky Huang (huangjacky.1996@gmail.com)
@@ -34,7 +34,7 @@ public class events extends AppCompatActivity {
         setContentView(R.layout.activity_events);
 
         /**
-         *   init events(user) page view
+         *   init EventDetailActivity(user) page view
          */
         this.titleNameView = (TextView)findViewById(R.id.titleView);
         this.photoView = (ImageView)findViewById(R.id.photos);

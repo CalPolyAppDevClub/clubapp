@@ -1,6 +1,7 @@
 package club.polyappdev.clubapp.AllViewable;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -35,11 +36,26 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    public static Intent getLogOutIntent(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("logout",true);
+        return intent;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        if(getIntent().getBooleanExtra("logout",false)) {
+            progress = ProgressDialog.show(this, "Logging out",
+                    "Please wait...", true);
+            FirebaseAuth.getInstance().signOut();
+        }
+
+
         setContentView(R.layout.activity_login);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -56,6 +72,10 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
+                    if(getIntent().getBooleanExtra("logout",false)) {
+                        if (progress != null) progress.dismiss();
+                        Toast.makeText(getApplicationContext(), "You have been logged out", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 // ...
             }
@@ -118,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private String getString(EditText view){
-        if (!view.getText().toString().equals(null) && !view.getText().toString().equals(""))
+        if (!view.getText().toString().equals(""))
             return view.getText().toString();
         else{
             Toast.makeText(LoginActivity.this, "Please enter username/password", Toast.LENGTH_SHORT).show();
@@ -145,10 +165,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(progress != null) progress.dismiss();
                 if (!task.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, R.string.login_error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.login_error, Toast.LENGTH_LONG).show();
                 } else{
                     Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
+                    finish();
                 }
             }
         });

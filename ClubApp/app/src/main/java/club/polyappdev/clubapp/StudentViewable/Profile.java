@@ -24,7 +24,7 @@ import club.polyappdev.clubapp.R;
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link Profile.OnFragmentInteractionListener} interface
- * to handle interaction events.
+ * to handle interaction EventDetailActivity.
  * Use the {@link Profile#newInstance} factory method to
  * create an instance of this fragment.
  */
@@ -104,18 +104,7 @@ public class Profile extends Fragment {
         toLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logOutClicked = true;
-                if(logOutClicked)
-                {
-                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(intent);
-                }
-                else
-                {
-                    //do nothing
-                }
+                startActivity(LoginActivity.getLogOutIntent(getContext()));
             }
         });
         return v;
