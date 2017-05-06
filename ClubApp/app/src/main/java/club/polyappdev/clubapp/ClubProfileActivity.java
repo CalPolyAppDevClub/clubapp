@@ -1,6 +1,5 @@
 package club.polyappdev.clubapp;
 
-import android.app.Activity;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.Html;
@@ -8,7 +7,6 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -65,7 +63,7 @@ public class ClubProfileActivity extends AppCompatActivity {
         Club test = new Club();
         test.setName("Mobile App Development Club");
         test.setPhoto("photo.png");
-        test.setDescription("Where People Make Apps!!!");
+        test.setDescription("Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!!");
         test.setEmail("appdev.calpoly.edu");
         test.setWebsite("mobileappdev.com");
         test.setClubType("Engineering");
@@ -97,13 +95,13 @@ public class ClubProfileActivity extends AppCompatActivity {
         clubWebsite = (TextView) findViewById(R.id.websiteView);
         subscribed = (Button) findViewById(R.id.subscribedButton);
         //clubEvent = (ScrollView) findViewById(R.id.clubEventView);
-        makeTextViewResizable(clubDescription, 1, "More", true);
 
         /* setting views */
         clubName.setText(test.getName());
         clubDescription.setText(test.getDescription());
         clubEmail.setText(test.getEmail());
         clubWebsite.setText(test.getWebsite());
+        makeTextViewResizable(clubDescription, 1, "More", true);
 
         clubPhoto.setImageResource(R.drawable.gettheapp);
     }
@@ -130,7 +128,7 @@ public class ClubProfileActivity extends AppCompatActivity {
                                     viewMore), BufferType.SPANNABLE);
                 } else if (maxLine > 0 && tv.getLineCount() >= maxLine) {
                     int lineEndIndex = tv.getLayout().getLineEnd(maxLine - 1);
-                    String text = tv.getText().subSequence(0, lineEndIndex - expandText.length() + 1) + " " + expandText;
+                    String text = tv.getText().subSequence(0, lineEndIndex - expandText.length()) + " " + expandText;
                     tv.setText(text);
                     tv.setMovementMethod(LinkMovementMethod.getInstance());
                     tv.setText(
@@ -169,7 +167,7 @@ public class ClubProfileActivity extends AppCompatActivity {
                         tv.setLayoutParams(tv.getLayoutParams());
                         tv.setText(tv.getTag().toString(), BufferType.SPANNABLE);
                         tv.invalidate();
-                        makeTextViewResizable(tv, 1, "More", true);
+                        makeTextViewResizable(tv, 1, "...More", true);
                     }
                 }
             }, str.indexOf(spanableText), str.indexOf(spanableText) + spanableText.length(), 0);
