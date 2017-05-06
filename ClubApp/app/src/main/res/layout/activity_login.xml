@@ -15,47 +15,50 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/FirstNameView"
-        android:layout_below="@+id/NameLoginView"
-        android:layout_alignLeft="@+id/NameLoginView"
-        android:layout_alignStart="@+id/NameLoginView"
+        android:id="@+id/passwordField"
+        android:layout_below="@+id/emailField"
+        android:layout_alignLeft="@+id/emailField"
+        android:layout_alignStart="@+id/emailField"
         android:hint="Password" />
 
     <Button
-        android:text="Log In!"
+        android:text="Log In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/FirstNameView"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/passwordField"
         android:layout_centerHorizontal="true"
         android:id="@+id/LoginButton" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/NameLoginView"
+        android:id="@+id/emailField"
         android:hint="Email"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+<LinearLayout android:id="@+id/signUpLayout"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@+id/LoginButton"
+              android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<TextView
+    android:id="@+id/textView6"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:text="Don't have an account?" />
 
     <Button
         android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
-        android:background="@android:drawable/screen_background_light_transparent"
-        android:elevation="10dp"
-        android:text="Sign Up Here!" />
+        android:text="Sign Up" />
+</LinearLayout>
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/signUp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:text="Don't have an account?" />
+
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package club.polyappdev.clubapp.AllViewable;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +19,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import club.polyappdev.clubapp.ClubViewable.ClubMainActivity;
 import club.polyappdev.clubapp.R;
 import club.polyappdev.clubapp.StudentViewable.MainActivity;
 
@@ -29,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordView;
     Button loginButton;
     Button registrationButton;
+    ProgressDialog progress;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                 // ...
             }
         };
-        this.usernameView = (EditText) findViewById(R.id.NameLoginView);
-        this.passwordView = (EditText) findViewById(R.id.FirstNameView);
+        this.usernameView = (EditText) findViewById(R.id.emailField);
+        this.passwordView = (EditText) findViewById(R.id.passwordField);
         this.loginButton = (Button) findViewById(R.id.LoginButton);
         this.registrationButton = (Button) findViewById(R.id.signUp);
         usernameView.requestFocus();
@@ -95,6 +95,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void loginAttempt(){
+
+        progress = ProgressDialog.show(this, "Logging in",
+                "Please wait...", true);
+
         //Temporary deactivate login; testing purposes; DO NOT DELETE
 
         /*String username = getString(usernameView);
@@ -139,6 +143,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                if(progress != null) progress.dismiss();
                 if (!task.isSuccessful()){
                     Toast.makeText(LoginActivity.this, R.string.login_error, Toast.LENGTH_SHORT).show();
                 } else{
