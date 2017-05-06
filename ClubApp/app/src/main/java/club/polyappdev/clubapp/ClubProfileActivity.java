@@ -1,13 +1,17 @@
 package club.polyappdev.clubapp;
 
+import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.support.design.widget.FloatingActionButton;
@@ -27,6 +31,8 @@ import java.util.List;
 
 import club.polyappdev.clubapp.Models.Club;
 import club.polyappdev.clubapp.Models.Event;
+
+import static java.security.AccessController.getContext;
 
 public class ClubProfileActivity extends AppCompatActivity {
 
@@ -101,7 +107,7 @@ public class ClubProfileActivity extends AppCompatActivity {
         clubDescription.setText(test.getDescription());
         clubEmail.setText(test.getEmail());
         clubWebsite.setText(test.getWebsite());
-        makeTextViewResizable(clubDescription, 1, "More", true);
+        makeTextViewResizable(clubDescription, 1, "...More", true);
 
         clubPhoto.setImageResource(R.drawable.gettheapp);
     }
@@ -174,6 +180,18 @@ public class ClubProfileActivity extends AppCompatActivity {
         }
         return ssb;
     }
+
+    /*
+    @NonNull
+    @Override
+    public View getView(Club club) {
+        ImageView clubIcon = (ImageView) findViewById(R.id.club.getEventList());
+        TextView clubName = (TextView) view.findViewById(R.id.clubNameText);
+        TextView eventName = (TextView) view.findViewById(R.id.eventNameText);
+        TextView eventLoc = (TextView) view.findViewById(R.id.eventLocationText);
+        TextView eventDateTime = (TextView) view.findViewById(R.id.eventDateTimeText);
+    }
+    */
 
     private void setEvent() {
 
