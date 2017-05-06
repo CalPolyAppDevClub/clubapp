@@ -11,16 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:text="My Subscribed Events"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/subscriptionPageTitle"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:gravity="center_horizontal" />
-
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

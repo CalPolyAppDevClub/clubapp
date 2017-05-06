@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements
                 .beginTransaction()
                 .replace(R.id.FragmentViewer, mFragmentList.get(pos))
                 .commit();
+        setTitle(mBottomNavigationView.getMenu().getItem(pos).getTitle());
     }
 
     private void createFragments() {

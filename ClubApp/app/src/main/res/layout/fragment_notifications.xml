@@ -9,18 +9,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize">
-
-        <TextView
-            android:text="My Notifications"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/notificationsTitle"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:gravity="center_horizontal" />
+        android:layout_height="match_parent">
 
         <ListView
             android:layout_width="match_parent"

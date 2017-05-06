@@ -51,6 +51,7 @@ public class EventDetailActivity extends AppCompatActivity {
         String description = i.getStringExtra("eventDesc");
         String date = i.getStringExtra("eventDate");
         String clubName = i.getStringExtra("eventClub");
+        setTitle(eventName);
 
         titleNameView.setText(clubName + ":" +  " " + eventName);
         locationView.setText("Location: " + location);
