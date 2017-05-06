@@ -17,4 +17,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/mapView" />
 
+    <Button
+        android:id="@+id/to_map_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
 </FrameLayout>

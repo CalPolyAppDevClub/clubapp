@@ -3,14 +3,21 @@
     package="club.polyappdev.clubapp">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <!-- android:theme="@style/AppTheme.NoActionBar" -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <!-- android:theme="@style/AppTheme.NoActionBar"-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBUe_qAIE_B11dcXh21CgS5FBdAfdpZVDE" />
         <activity
             android:name=".StudentViewable.MainActivity"
             android:label="@string/app_name"/>
@@ -22,23 +29,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AllViewable.RegistrationActivity">
-        </activity>
-        <activity android:name=".ClubViewable.ClubMainActivity"></activity>
+        <activity android:name=".AllViewable.RegistrationActivity" />
+        <activity android:name=".ClubViewable.ClubMainActivity" />
         <activity
-            android:name="MySetting"
-            android:label="@string/title_my_settings">
-        </activity>
-        <activity
-            android:name=".EditProfile">
-        </activity>
+            android:name=".MySetting"
+            android:label="@string/title_my_settings" />
+        <activity android:name=".EditProfile" />
         <activity
             android:name=".Pop"
-            android:theme = "@style/AppTheme.PopupPassword">
-        </activity>
+            android:theme="@style/AppTheme.PopupPassword" />
         <activity
             android:name=".ClubProfileActivity"
             android:label="@string/title_activity_club_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/title_activity_map"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
