@@ -31,6 +31,10 @@ public class Event {
         this.clubName = club.getName();// so I can parcel it
     }
 
+    public String getClubName() {
+        return clubName;
+    }
+
     public String getStringLoc() {
         return stringLoc;
     }
@@ -38,6 +42,10 @@ public class Event {
     public void setStringLoc(String stringLoc) {
         this.stringLoc = stringLoc;
     }
+
+    public String getStringDate() {return stringDate; }
+
+    public void setStringDate(String stringDate) { this.stringDate = stringDate; }
 
     private String title;
     private String photo; /* reference to cache */
