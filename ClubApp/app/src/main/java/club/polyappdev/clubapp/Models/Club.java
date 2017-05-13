@@ -18,7 +18,6 @@ public class Club {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -26,7 +25,6 @@ public class Club {
     public String getPhoto() {
         return photo;
     }
-
     public void setPhoto(String photo) {
         this.photo = photo;
     }
@@ -34,7 +32,6 @@ public class Club {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -42,7 +39,6 @@ public class Club {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -50,7 +46,6 @@ public class Club {
     public String getWebsite() {
         return website;
     }
-
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -58,7 +53,6 @@ public class Club {
     public String getClubType() {
         return clubType;
     }
-
     public void setClubType(String clubType) {
         this.clubType = clubType;
     }
@@ -66,7 +60,6 @@ public class Club {
     public List<Event> getEventList() {
         return eventList;
     }
-
     public void setEventList(List<Event> eventList) {
         this.eventList = eventList;
     }
@@ -74,7 +67,6 @@ public class Club {
     public List<String> getTags() {
         return tags;
     }
-
     public void setTags(List<String> tags) {
         this.tags = tags;
     }

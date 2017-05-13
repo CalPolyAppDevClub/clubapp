@@ -4,17 +4,15 @@
     android:layout_height="match_parent"
     tools:context="club.polyappdev.clubapp.StudentViewable.Subscribed">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <ListView
+            android:id="@+id/subscribedListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/subscribedListView" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
