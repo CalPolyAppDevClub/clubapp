@@ -13,7 +13,7 @@ import com.google.android.gms.maps.MapView;
 
 import club.polyappdev.clubapp.R;
 
-public class events extends AppCompatActivity {
+public class EventDetailActivity extends AppCompatActivity {
     /**
      *  Events page(user side)
      *  @author Jacky Huang (huangjacky.1996@gmail.com)
@@ -34,7 +34,7 @@ public class events extends AppCompatActivity {
         setContentView(R.layout.activity_events);
 
         /**
-         *   init events(user) page view
+         *   init EventDetailActivity(user) page view
          */
         this.titleNameView = (TextView)findViewById(R.id.titleView);
         this.photoView = (ImageView)findViewById(R.id.photos);
@@ -45,16 +45,16 @@ public class events extends AppCompatActivity {
         this.keywordView = (TextView)findViewById(R.id.keyword);
         this.notifymeView = (CheckBox)findViewById(R.id.notifyBox);
 
-        //Intent i = new Intent();
         Intent i = getIntent();
         String eventName = i.getStringExtra("eventName");
         String location = i.getStringExtra("eventStrLoc");
         String description = i.getStringExtra("eventDesc");
         String date = i.getStringExtra("eventDate");
         String clubName = i.getStringExtra("eventClub");
+        setTitle(eventName);
 
         titleNameView.setText(clubName + ":" +  " " + eventName);
-        locationView.setText("location: " + location);
+        locationView.setText("Location: " + location);
         timeView.setText("Date: " + date);
         descriptionView.setText("Description: " + description);
     }

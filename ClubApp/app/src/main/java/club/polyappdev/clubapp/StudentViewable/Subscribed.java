@@ -11,11 +11,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import club.polyappdev.clubapp.AllViewable.events;
+import club.polyappdev.clubapp.AllViewable.EventDetailActivity;
 import club.polyappdev.clubapp.Models.Club;
 import club.polyappdev.clubapp.Models.Event;
 import club.polyappdev.clubapp.Models.Subscription;
@@ -26,7 +27,7 @@ import club.polyappdev.clubapp.R;
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link Subscribed.OnFragmentInteractionListener} interface
- * to handle interaction events.
+ * to handle interaction EventDetailActivity.
  * Use the {@link Subscribed#newInstance} factory method to
  * create an instance of this fragment.
  */
@@ -116,7 +117,7 @@ public class Subscribed extends Fragment {
 
         // FIXME delete this sample data
         // the above is all testing code
-        // the adapter is written assuming we are making a list of events from subscribed clubs
+        // the adapter is written assuming we are making a list of EventDetailActivity from subscribed clubs
         // rather than a list of subscribed clubs
 
 //        for (Subscription sub : mSubscriptionList){ //FIXME this code should get subscriptions from database
@@ -138,12 +139,14 @@ public class Subscribed extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Event clickedEvent = (Event) parent.getItemAtPosition(position);
 
-                Intent eventIntent = new Intent(getContext(),events.class);
+                Intent eventIntent = new Intent(getContext(),EventDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
                 bundle.putString("eventDesc", clickedEvent.getDescription());
                 bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
-                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
+                String dateStr = DateFormat.getDateInstance(DateFormat.LONG).format(clickedEvent.getDate());
+                String timeStr = DateFormat.getTimeInstance(DateFormat.SHORT).format((clickedEvent.getDate()));
+                bundle.putString("eventDate", dateStr+", "+timeStr);
                 bundle.putString("eventClub", clickedEvent.getClub().getName());
                 eventIntent.putExtras(bundle);
                 //based on item add info to intent

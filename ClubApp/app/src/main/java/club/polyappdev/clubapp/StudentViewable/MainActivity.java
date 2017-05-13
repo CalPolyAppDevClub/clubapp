@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements
                 .beginTransaction()
                 .replace(R.id.FragmentViewer, mFragmentList.get(pos))
                 .commit();
+        setTitle(mBottomNavigationView.getMenu().getItem(pos).getTitle());
     }
 
     private void createFragments() {
@@ -133,13 +134,7 @@ public class MainActivity extends AppCompatActivity implements
         }
         //4.22.2017 modify logout to clear stack and log out of account from firebase - Jacky Huang
         if (id == R.id.action_logout) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            Toast toast;
-            toast = Toast.makeText(this, "You have been \"logged out\"", Toast.LENGTH_SHORT);
-            toast.show();
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            FirebaseAuth.getInstance().signOut();
-            startActivity(intent);
+            startActivity(LoginActivity.getLogOutIntent(this));
         }
 
         return super.onOptionsItemSelected(item);
