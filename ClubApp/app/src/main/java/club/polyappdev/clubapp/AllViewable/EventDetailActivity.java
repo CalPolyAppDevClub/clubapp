@@ -2,8 +2,10 @@ package club.polyappdev.clubapp.AllViewable;
 
 import android.content.Intent;
 import android.provider.Settings;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ public class EventDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /**
          *   init EventDetailActivity(user) page view
@@ -58,6 +61,15 @@ public class EventDetailActivity extends AppCompatActivity {
         timeView.setText("Date: " + date);
         descriptionView.setText("Description: " + description);
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

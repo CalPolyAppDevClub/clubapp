@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -32,6 +34,7 @@ public class MySetting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_setting);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Button cp = (Button) findViewById(R.id.C_P_but);
         cp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,10 +48,18 @@ public class MySetting extends AppCompatActivity {
     }
     public void sendMessage(View view)
     {
-        Log.w("test","test");
         Intent intent = new Intent(MySetting.this, EditProfile.class);
         startActivity(intent);
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

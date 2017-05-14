@@ -4,12 +4,14 @@ import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NavUtils;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -43,15 +45,15 @@ public class ClubProfileActivity extends AppCompatActivity {
     protected TextView clubWebsite;
     protected Button subscribed;
     protected ScrollView clubEvent;
-    private double d1 = 0.0;
-    private int d2 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_club_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Required empty public constructor
         List<String> tags = new ArrayList<>();
@@ -82,7 +84,7 @@ public class ClubProfileActivity extends AppCompatActivity {
             Event event = new Event();
             event.setClub(test);
             event.setDate(new Date());
-            event.setLocation(new Location(Location.convert(d1, d2)));
+            //event.setLocation(new Location(Location.convert(d1, d2)));
             event.setDescription("Weekly Overview");
             event.setStringLoc("180-114");
             event.setStringDate("4/22/2017");
@@ -181,19 +183,14 @@ public class ClubProfileActivity extends AppCompatActivity {
         return ssb;
     }
 
-    /*
-    @NonNull
     @Override
-    public View getView(Club club) {
-        ImageView clubIcon = (ImageView) findViewById(R.id.club.getEventList());
-        TextView clubName = (TextView) view.findViewById(R.id.clubNameText);
-        TextView eventName = (TextView) view.findViewById(R.id.eventNameText);
-        TextView eventLoc = (TextView) view.findViewById(R.id.eventLocationText);
-        TextView eventDateTime = (TextView) view.findViewById(R.id.eventDateTimeText);
-    }
-    */
-
-    private void setEvent() {
-
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
