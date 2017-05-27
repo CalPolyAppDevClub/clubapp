@@ -9,26 +9,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-import club.polyappdev.clubapp.AllViewable.LoginActivity;
-import club.polyappdev.clubapp.ClubProfileActivity;
-import club.polyappdev.clubapp.ClubViewable.ClubMainActivity;
-import club.polyappdev.clubapp.MySetting;
+import club.polyappdev.clubapp.MapActivity;
 import club.polyappdev.clubapp.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Profile.OnFragmentInteractionListener} interface
+ * {@link General.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Profile#newInstance} factory method to
+ * Use the {@link General#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Profile extends Fragment {
+public class General extends Fragment implements OnMapReadyCallback{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,8 +39,11 @@ public class Profile extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private GoogleMap mMap;
 
-    public Profile() {
+    private Button MapButton;
+
+    public General() {
         // Required empty public constructor
     }
 
@@ -50,17 +53,20 @@ public class Profile extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Profile.
+     * @return A new instance of fragment General.
      */
     // TODO: Rename and change types and number of parameters
-    public static Profile newInstance(String param1, String param2) {
-        Profile fragment = new Profile();
+    public static General newInstance(String param1, String param2) {
+        General fragment = new General();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,55 +77,20 @@ public class Profile extends Fragment {
         }
     }
 
-    Button toSettingButton;
-    Button navButtonToClubProfile;
-    Button toLogOut;
-    boolean logOutClicked = false; //check if log out button is clicked.
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_general, container, false);
+        this.MapButton = (Button) v.findViewById(R.id.to_map_button);
+        MapButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), MapActivity.class);
+                startActivity(i);
+            }
+        });
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        navButtonToClubProfile = (Button) v.findViewById(R.id.clubprofilebutton);
-
-        navButtonToClubProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ClubProfileActivity.class);
-                startActivity(intent);
-            }
-        });
-        toSettingButton = (Button) v.findViewById(R.id.Setting_but);
-        toSettingButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(getActivity(), MySetting.class);
-                startActivity(intent);
-            }
-        });
-        //Log Out button working 4.29.17 - Jacky Huang
-        toLogOut = (Button) v.findViewById(R.id.logoutButton);
-        toLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logOutClicked = true;
-                if(logOutClicked)
-                {
-                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(intent);
-                }
-                else
-                {
-                    //do nothing
-                }
-            }
-        });
         return v;
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -145,6 +116,19 @@ public class Profile extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        //Add a marker in Sydney, Australia. and move the camera.
+        LatLng sydney =  new LatLng(-34,151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+    }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

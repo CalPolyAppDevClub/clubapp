@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +26,7 @@ import club.polyappdev.clubapp.R;
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link Subscribed.OnFragmentInteractionListener} interface
- * to handle interaction EventDetailActivity.
+ * to handle interaction events.
  * Use the {@link Subscribed#newInstance} factory method to
  * create an instance of this fragment.
  */
@@ -117,7 +116,7 @@ public class Subscribed extends Fragment {
 
         // FIXME delete this sample data
         // the above is all testing code
-        // the adapter is written assuming we are making a list of EventDetailActivity from subscribed clubs
+        // the adapter is written assuming we are making a list of events from subscribed clubs
         // rather than a list of subscribed clubs
 
 //        for (Subscription sub : mSubscriptionList){ //FIXME this code should get subscriptions from database
@@ -144,9 +143,7 @@ public class Subscribed extends Fragment {
                 bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
                 bundle.putString("eventDesc", clickedEvent.getDescription());
                 bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
-                String dateStr = DateFormat.getDateInstance(DateFormat.LONG).format(clickedEvent.getDate());
-                String timeStr = DateFormat.getTimeInstance(DateFormat.SHORT).format((clickedEvent.getDate()));
-                bundle.putString("eventDate", dateStr+", "+timeStr);
+                bundle.putLong("eventDate", clickedEvent.getDate().getTime());
                 bundle.putString("eventClub", clickedEvent.getClub().getName());
                 eventIntent.putExtras(bundle);
                 //based on item add info to intent

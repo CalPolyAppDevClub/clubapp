@@ -24,7 +24,7 @@ import club.polyappdev.clubapp.R;
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link Notifications.OnFragmentInteractionListener} interface
- * to handle interaction EventDetailActivity.
+ * to handle interaction events.
  * Use the {@link Notifications#newInstance} factory method to
  * create an instance of this fragment.
  */
