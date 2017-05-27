@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import java.util.Date;
 
-import club.polyappdev.clubapp.AllViewable.events;
+import club.polyappdev.clubapp.AllViewable.EventDetailActivity;
 import club.polyappdev.clubapp.Models.Club;
 import club.polyappdev.clubapp.Models.Event;
 import club.polyappdev.clubapp.Models.Notification;
@@ -95,7 +95,7 @@ public class Notifications extends Fragment {
                 Event clickedEvent = ((Notification)parent.getAdapter().getItem(position)).getEvent();
 
 
-                Intent eventIntent = new Intent(getContext(),events.class);
+                Intent eventIntent = new Intent(getContext(),EventDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
                 bundle.putString("eventDesc", clickedEvent.getDescription());

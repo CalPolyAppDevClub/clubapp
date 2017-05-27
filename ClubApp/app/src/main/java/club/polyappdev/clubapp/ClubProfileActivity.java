@@ -6,12 +6,14 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NavUtils;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -33,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import club.polyappdev.clubapp.AllViewable.events;
+import club.polyappdev.clubapp.AllViewable.EventDetailActivity;
 import club.polyappdev.clubapp.Models.Club;
 import club.polyappdev.clubapp.Models.Event;
 import club.polyappdev.clubapp.StudentViewable.Subscribed;
@@ -57,9 +59,11 @@ public class ClubProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_club_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Required empty public constructor
         List<String> tags = new ArrayList<>();
@@ -78,8 +82,8 @@ public class ClubProfileActivity extends AppCompatActivity {
         test.setName("Mobile App Development Club");
         test.setPhoto("photo.png");
         test.setDescription("Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!! Where People Make Apps!!!");
-        test.setEmail("appdev.calpoly.edu");
-        test.setWebsite("mobileappdev.com");
+        test.setEmail("calpolyappdev@gmail.com");
+        test.setWebsite("polyappdev.club");
         test.setClubType("Engineering");
 
         test.setTags(tags);
@@ -123,7 +127,7 @@ public class ClubProfileActivity extends AppCompatActivity {
             Event event = new Event();
             event.setClub(test);
             event.setDate(new Date());
-            event.setLocation(new Location(Location.convert(d1, d2)));
+            //event.setLocation(new Location(Location.convert(d1, d2)));
             event.setDescription("Weekly Overview");
             event.setStringLoc("180-114");
             event.setStringDate("4/22/2017");
@@ -154,7 +158,7 @@ public class ClubProfileActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Event clickedEvent = (Event) parent.getItemAtPosition(position);
 
-                Intent eventIntent = new Intent(ClubProfileActivity.this, events.class);
+                Intent eventIntent = new Intent(ClubProfileActivity.this, EventDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
                 bundle.putString("eventDesc", clickedEvent.getDescription());
@@ -306,7 +310,7 @@ public class ClubProfileActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Event clickedEvent = (Event) parent.getItemAtPosition(position);
 
-                Intent eventIntent = new Intent(ClubProfileActivity.this, events.class);
+                Intent eventIntent = new Intent(ClubProfileActivity.this, EventDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
                 bundle.putString("eventDesc", clickedEvent.getDescription());
@@ -338,19 +342,15 @@ public class ClubProfileActivity extends AppCompatActivity {
         void onFragmentInteraction(Uri uri);
     }
 
-    /*
     @NonNull
     @Override
-    public View getView(Club club) {
-        ImageView clubIcon = (ImageView) findViewById(R.id.club.getEventList());
-        TextView clubName = (TextView) view.findViewById(R.id.clubNameText);
-        TextView eventName = (TextView) view.findViewById(R.id.eventNameText);
-        TextView eventLoc = (TextView) view.findViewById(R.id.eventLocationText);
-        TextView eventDateTime = (TextView) view.findViewById(R.id.eventDateTimeText);
-    }
-    */
-
-    private void setEvent() {
-
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

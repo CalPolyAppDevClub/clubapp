@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import club.polyappdev.clubapp.AllViewable.events;
+import club.polyappdev.clubapp.AllViewable.EventDetailActivity;
 import club.polyappdev.clubapp.Models.Club;
 import club.polyappdev.clubapp.Models.Event;
 import club.polyappdev.clubapp.Models.Subscription;
@@ -138,7 +138,7 @@ public class Subscribed extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Event clickedEvent = (Event) parent.getItemAtPosition(position);
 
-                Intent eventIntent = new Intent(getContext(),events.class);
+                Intent eventIntent = new Intent(getContext(),EventDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
                 bundle.putString("eventDesc", clickedEvent.getDescription());
