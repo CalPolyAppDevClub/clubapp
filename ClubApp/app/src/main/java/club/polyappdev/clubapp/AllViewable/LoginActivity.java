@@ -31,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     Button registrationButton;
     ProgressDialog progress;
 
+    public static String password = null;
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -159,14 +161,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signIn(String email, String password){
-
+        final String pw = password;
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(progress != null) progress.dismiss();
                 if (!task.isSuccessful()){
+                    LoginActivity.password = null;
                     Toast.makeText(LoginActivity.this, R.string.login_error, Toast.LENGTH_LONG).show();
                 } else{
+                    // FIXME: ick
+                    LoginActivity.password = pw;
                     Intent i = new Intent(LoginActivity.this, MainActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);

@@ -48,10 +48,6 @@
             android:parentActivityName=".StudentViewable.MainActivity"
             android:label="@string/title_activity_club_profile"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".MapActivity"
-            android:label="@string/title_activity_map"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
