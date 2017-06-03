@@ -4,23 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +19,8 @@ import club.polyappdev.clubapp.AllViewable.LoginActivity;
 import club.polyappdev.clubapp.MySetting;
 import club.polyappdev.clubapp.R;
 
-import static android.R.attr.fragment;
-
 public class MainActivity extends AppCompatActivity implements
-        General.OnFragmentInteractionListener,
+        //General.OnFragmentInteractionListener,
         Notifications.OnFragmentInteractionListener,
         Profile.OnFragmentInteractionListener,
         Subscribed.OnFragmentInteractionListener {
@@ -98,13 +86,14 @@ public class MainActivity extends AppCompatActivity implements
                 .beginTransaction()
                 .replace(R.id.FragmentViewer, mFragmentList.get(pos))
                 .commit();
+        setTitle(mBottomNavigationView.getMenu().getItem(pos).getTitle());
     }
 
     private void createFragments() {
         Fragment sub = new Subscribed();
         Fragment notif = new Notifications();
         Fragment prof = new Profile();
-        Fragment general = new General();
+        Fragment general = new MapFragment();
         mFragmentList.add(sub);
         mFragmentList.add(notif);
         mFragmentList.add(general);
@@ -133,13 +122,7 @@ public class MainActivity extends AppCompatActivity implements
         }
         //4.22.2017 modify logout to clear stack and log out of account from firebase - Jacky Huang
         if (id == R.id.action_logout) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            Toast toast;
-            toast = Toast.makeText(this, "You have been \"logged out\"", Toast.LENGTH_SHORT);
-            toast.show();
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            FirebaseAuth.getInstance().signOut();
-            startActivity(intent);
+            startActivity(LoginActivity.getLogOutIntent(this));
         }
 
         return super.onOptionsItemSelected(item);

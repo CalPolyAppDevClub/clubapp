@@ -5,6 +5,7 @@
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <!-- android:theme="@style/AppTheme.NoActionBar" -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -29,17 +30,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AllViewable.RegistrationActivity" />
+        <activity android:name=".AllViewable.RegistrationActivity"
+                  android:label="Sign Up"
+            android:parentActivityName=".AllViewable.LoginActivity"/>
         <activity android:name=".ClubViewable.ClubMainActivity" />
         <activity
             android:name=".MySetting"
-            android:label="@string/title_my_settings" />
-        <activity android:name=".EditProfile" />
+            android:label="@string/title_my_settings"
+            android:parentActivityName=".StudentViewable.MainActivity"/>
+        <activity android:name=".EditProfile"
+            android:parentActivityName=".MySetting"/>
         <activity
             android:name=".Pop"
-            android:theme="@style/AppTheme.PopupPassword" />
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity
             android:name=".ClubProfileActivity"
+            android:parentActivityName=".StudentViewable.MainActivity"
             android:label="@string/title_activity_club_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
