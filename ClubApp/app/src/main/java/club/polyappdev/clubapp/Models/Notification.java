@@ -12,14 +12,6 @@ public class Notification {
     private Club club;
     private String content;
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public Event getEvent() {
         return event;
     }

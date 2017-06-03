@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import club.polyappdev.clubapp.AllViewable.EventDetailActivity;
+import club.polyappdev.clubapp.EasierDate;
 import club.polyappdev.clubapp.Models.Club;
 import club.polyappdev.clubapp.Models.Event;
 import club.polyappdev.clubapp.Models.Subscription;
@@ -91,21 +90,21 @@ public class Subscribed extends Fragment {
 
         ArrayList<Event> sample = new ArrayList<>();
         Event event1 = new Event();
-        event1.setDate(new Date(2017, 0, 9));
+        event1.setDate(new EasierDate(2017, 1, 9));
         event1.setStringLoc("Canada");
         event1.setTitle("Moon Landing");
         event1.setDescription("We are going to attempt to land a man on the moon, with the generous help of the Canadian Space Program.");
         event1.setClub(club);
 
         Event event2 = new Event();
-        event2.setDate(new Date(2017, 2, 11));
+        event2.setDate(new EasierDate(2017, 3, 11));
         event2.setStringLoc("Mexico");
         event2.setTitle("Another Moon Landing");
         event2.setDescription("We are doing a moon landing that is way better than Space Club's");
         event2.setClub(otherClub);
 
         Event event3 = new Event();
-        event3.setDate(new Date(2017, 2, 12));
+        event3.setDate(new EasierDate(2017, 3, 12));
         event3.setStringLoc("Japan");
         event3.setTitle("Olympics");
         event3.setDescription("The best space athletes gather to compete for the gold.");
@@ -144,9 +143,7 @@ public class Subscribed extends Fragment {
                 bundle.putString("eventName", clickedEvent.getTitle()); //serializable?
                 bundle.putString("eventDesc", clickedEvent.getDescription());
                 bundle.putString("eventStrLoc", clickedEvent.getStringLoc());
-                String dateStr = DateFormat.getDateInstance(DateFormat.LONG).format(clickedEvent.getDate());
-                String timeStr = DateFormat.getTimeInstance(DateFormat.SHORT).format((clickedEvent.getDate()));
-                bundle.putString("eventDate", dateStr+", "+timeStr);
+                bundle.putString("eventDate", clickedEvent.getDate().toString());
                 bundle.putString("eventClub", clickedEvent.getClub().getName());
                 eventIntent.putExtras(bundle);
                 //based on item add info to intent

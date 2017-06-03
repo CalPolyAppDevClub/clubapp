@@ -51,7 +51,7 @@ public class NotificationListAdapter extends BaseAdapter {
         eventTitle.setText(notification_list[i].getEvent().getTitle());
 
         TextView eventDate = (TextView) view.findViewById(R.id.eventDate);
-        eventDate.setText(notification_list[i].getDate().toString());
+        eventDate.setText(notification_list[i].getEvent().getDate().toString());
 
         TextView eventDescription = (TextView) view.findViewById(R.id.eventDescription);
         eventDescription.setText(notification_list[i].getContent());

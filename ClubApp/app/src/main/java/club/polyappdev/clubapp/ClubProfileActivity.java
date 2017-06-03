@@ -83,11 +83,10 @@ public class ClubProfileActivity extends AppCompatActivity {
         for (int k = 0; k < 4; k++) {
             Event event = new Event();
             event.setClub(test);
-            event.setDate(new Date());
             //event.setLocation(new Location(Location.convert(d1, d2)));
             event.setDescription("Weekly Overview");
             event.setStringLoc("180-114");
-            event.setStringDate("4/22/2017");
+            event.setDate(new EasierDate(4, 22, 2017));
             event.setTitle("General Meeting");
             event.setFood(false);
             event.setKeywords(keywords);

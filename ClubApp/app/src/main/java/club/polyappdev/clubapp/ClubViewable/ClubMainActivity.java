@@ -37,7 +37,6 @@ public class ClubMainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        Log.w("test","test");
         //noinspection SimplifiableIfStatement
 
         //4.29.2017 modify logout to clear stack and log out of account from firebase - Jacky Huang
