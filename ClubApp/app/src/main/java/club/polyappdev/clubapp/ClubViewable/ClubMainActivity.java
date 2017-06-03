@@ -42,13 +42,8 @@ public class ClubMainActivity extends AppCompatActivity {
 
         //4.29.2017 modify logout to clear stack and log out of account from firebase - Jacky Huang
         if (id == R.id.action_logout){
-            Intent intent = new Intent(ClubMainActivity.this, LoginActivity.class);
-            Toast toast;
-            toast = Toast.makeText(this, "You have been \"logged out\"", Toast.LENGTH_SHORT);
-            toast.show();
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            FirebaseAuth.getInstance().signOut();
-            startActivity(intent);
+
+            startActivity(LoginActivity.getLogOutIntent(this));
         }
         else if (id == R.id.action_settings) {
             Intent intent2 = new Intent(ClubMainActivity.this, MySetting.class);
